@@ -8,7 +8,6 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    // "typeRoots": ["./node_modules/@types", "./src/**"],
     "types": ["./src/**"],
     "paths": {
       "@/*": ["src/*"]
