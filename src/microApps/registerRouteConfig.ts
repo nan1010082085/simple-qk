@@ -1,7 +1,7 @@
 import { RouteConfig, RegisterRouteConfigOption } from '../typings';
 
 /**
- *
+ * 注册微应用路由
  * @param routes 路由集合
  * @param {RegisterRouteConfigOption} option
  * @returns { base: string; mode: string; routes: RouteConfig[] } routes
