@@ -11,12 +11,20 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["./src/typings/*"],
+    "types": ["@types/jest"],
     "paths": {
       "@/*": ["src/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "es2015.Promise", "scripthost"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "tests/**/*.ts", "tests/**/*.tsx", "index.ts"],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "__tests__/**/*.ts",
+    "tests/**/*.ts",
+    "tests/**/*.tsx",
+    "index.ts"
+  ],
   "exclude": ["node_modules"]
 }
