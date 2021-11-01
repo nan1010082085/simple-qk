@@ -4,7 +4,7 @@ module.exports = {
     node: true,
     jasmine: true
   },
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
     sourceType: 'module',
@@ -12,18 +12,9 @@ module.exports = {
       jsx: true
     }
   },
-  extends: ['plugin:vue/vue3-recommended', 'plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
-  plugins: ['@typescript-eslint', 'prettier', 'vue'],
+  extends: ['plugin:@typescript-eslint/recommended', 'plugin:prettier/recommended'],
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: 20,
-        multiline: {
-          max: 10
-        }
-      }
-    ],
     'prettier/prettier': [
       'error',
       {
