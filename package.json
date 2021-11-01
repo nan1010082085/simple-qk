@@ -5,6 +5,7 @@
   "main": "index.ts",
   "types": "./src/typings.ts",
   "scripts": {
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "jest src/__test__",
     "commit": "git add . & git-cz",
     "precommit": "lint-staged",
