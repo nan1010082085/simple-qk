@@ -3,6 +3,8 @@ declare global {
     __POWERED_BY_QIANKUN__?: boolean | undefined;
     __INJECTED_PUBLIC_PATH_BY_QIANKUN__?: string | undefined;
     qiankunStarted?: boolean | undefined;
+    __webpack_public_path__: any;
+    Promise: any
   }
 }
 
@@ -62,4 +64,23 @@ export interface RegisterRouteConfigOption {
   component: Promise<any> | (() => void);
   activeRule: string;
   local: string;
+}
+
+/**
+ * @param {object} option routes vue路由对象集 name 组件名称 components 路由注册返回的唯一组件, store vuex状态 log 是否开启日志
+ * @param {object} Vue 实例
+ * @param {object} VueRouter 路由实例
+ * @param {object} render vue默认app组件
+ */
+export interface UseMicroAppOption {
+  option: {
+    routes: any;
+    name: any;
+    component: any;
+    store?: any;
+    [T: string]: any;
+  };
+  Vue: any;
+  VueRouter: any;
+  render: any;
 }

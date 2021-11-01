@@ -23,8 +23,6 @@
       "single"
     ],
     "trailing-comma": false,
-    "trailing-whitespace": true,
-    "react/react-in-jsx-scope": true,
     "member-access": false,
     "no-console": false,
     "no-empty": false,
