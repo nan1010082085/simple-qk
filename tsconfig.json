@@ -3,6 +3,7 @@
     "target": "esnext",
     "module": "esnext",
     "strict": true,
+    "jsx": "preserve",
     "importHelpers": true,
     "moduleResolution": "node",
     "experimentalDecorators": true,
@@ -11,10 +12,7 @@
     "allowSyntheticDefaultImports": true,
     "sourceMap": true,
     "baseUrl": ".",
-    "types": ["@types/jest"],
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    "types": ["@types/jest", "@types/node"],
     "lib": ["esnext", "dom", "dom.iterable", "es2015.Promise", "scripthost"]
   },
   "include": [

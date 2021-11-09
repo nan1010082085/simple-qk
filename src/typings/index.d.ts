@@ -4,7 +4,14 @@ declare global {
     __INJECTED_PUBLIC_PATH_BY_QIANKUN__?: string | undefined;
     qiankunStarted?: boolean | undefined;
     __webpack_public_path__: any;
-    Promise: any
+    Promise: any;
+    QK: any;
+  }
+
+  namespace JSX {
+    interface IntrinsicElements {
+      [elem: string]: any;
+    }
   }
 }
 
@@ -46,10 +53,7 @@ export interface MicroAppsConfigOption {
   mode: 'hash' | 'history';
   container?: string;
   env: 'dev' | 'prod';
-  devParam?: {
-    key: string;
-    url: string;
-  };
+  devParam?: { [T: string]: string };
 }
 
 /**
@@ -76,11 +80,18 @@ export interface UseMicroAppOption {
   option: {
     routes: any;
     name: any;
-    component: any;
+    component?: any;
     store?: any;
     [T: string]: any;
   };
   Vue: any;
   VueRouter: any;
   render: any;
+}
+
+export interface QKOption {
+  isMicro?: boolean;
+  routes?: RoutesMicroApp[];
+  config?: MicroAppsConfigOption;
+  action?: FrameworkLifeCycles<any>;
 }

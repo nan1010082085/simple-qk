@@ -1,4 +1,4 @@
-import { RouteConfig, UseMicroAppOption } from './../typings/index';
+import { RouteConfig, UseMicroAppOption } from './../typings';
 import { registerRouteConfig } from './registerRouteConfig';
 
 class UseMicroApp {
@@ -24,7 +24,7 @@ class UseMicroApp {
     this.$log = log;
     this.$name = name;
     this.$routes = routes;
-    this.$component = component;
+    this.$component = component ? component : () => import('../components/Container');
     this.$activeRule = `${name.split('-')[0]}`;
     this.$local = local ? '/' : `${name}`;
     this.$store = store;
@@ -50,23 +50,23 @@ class UseMicroApp {
     }).$mount(container ? container.querySelector('#app') : '#app');
   }
 
-  async bootstrap() {
-    return window.Promise.resolve();
+  bootstrap() {
+    return Promise.resolve();
   }
 
-  async mount(props: any) {
+  mount(props: any) {
     this.render(props);
   }
 
-  async unmount() {
+  unmount() {
     this.$instance.$destroy();
     this.$instance.$el.innerHTML = '';
     this.$instance = null;
     this.$router = null;
   }
 
-  async update(props: any) {
-    this.render(props);
+  update(props: any) {
+    return Promise.resolve(props);
   }
 
   start() {
@@ -74,6 +74,7 @@ class UseMicroApp {
       console.log(`[start ${this.$name} app] is primary app :`, window.__POWERED_BY_QIANKUN__);
     }
     if (window.__POWERED_BY_QIANKUN__) {
+      // @ts-ignore
       __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ as string;
     }
     // 独立运行时
