@@ -22,7 +22,7 @@ export {
   removeGlobalUncaughtErrorHandler
 };
 
-export default class QK extends UseApp {
+export class QK extends UseApp {
   public UseMicroApp!: any;
   public start = start;
   constructor(option: QKOption) {
