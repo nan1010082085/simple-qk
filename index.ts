@@ -3,7 +3,7 @@ import { QKOption, UseMicroAppOption } from './src/typings';
 import UseMicroApp from './src/microApps';
 import UseApp from './src/container';
 
-class QK extends UseApp {
+export default class QK extends UseApp {
   public start = start;
   public loadMicroApp = loadMicroApp;
   public initGlobalState: () => MicroAppStateActions = initGlobalState;
@@ -15,6 +15,3 @@ class QK extends UseApp {
     }
   }
 }
-
-window.QK = QK;
-export default QK;
