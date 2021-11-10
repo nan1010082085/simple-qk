@@ -1,5 +1,5 @@
 import { QKOption } from '../typings';
-import { registerMicroApps, start } from 'qiankun';
+import { registerMicroApps } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';
 
 const beforeLoad = async (app: any) => {
@@ -50,8 +50,6 @@ class UseApp {
         $action
       )
     );
-
-    start();
   }
 }
 
