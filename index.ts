@@ -22,13 +22,6 @@ export {
   removeGlobalUncaughtErrorHandler
 };
 
-export class QK extends UseApp {
-  public UseMicroApp!: any;
-  public start = start;
-  constructor(option: QKOption) {
-    super(option);
-    if (option.isMicro) {
-      this.UseMicroApp = (option: UseMicroAppOption) => new UseMicroApp(option);
-    }
-  }
-}
+export const QKRegisterApp = (option: QKOption) => new UseApp(option);
+
+export const QKRegisterMicroApp = (option: UseMicroAppOption) => new UseMicroApp(option);

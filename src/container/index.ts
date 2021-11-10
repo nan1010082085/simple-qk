@@ -1,5 +1,5 @@
 import { QKOption } from '../typings';
-import { registerMicroApps } from 'qiankun';
+import { registerMicroApps, start } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';
 
 const beforeLoad = async (app: any) => {
@@ -11,6 +11,8 @@ const beforeMount = async (app: any) => {
 };
 
 class UseApp {
+  public start = start;
+
   constructor({ isMicro = false, routes, config, action }: QKOption) {
     if (!isMicro) {
       this.useAppAction(routes, config, action);
