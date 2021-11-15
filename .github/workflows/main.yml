@@ -2,39 +2,36 @@
 
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: master
-  pull_request:
-    branches: master 
+    
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@master
-  release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v1
-      - uses: actions/setup-node@v1
-        with:
-          node-version: 16.13.0
-          registry-url: https://registry.npmjs.org/
-      - run: yarn install
-      - name: 'Git Configure'
-        uses: dawidd6/action-git-user-config@v1.0.0
-        with:
-          token: ${{github.token}}
-          username: ${{github.actor}}
-      - run: yarn release
-      - name: 'Git Push'
-        uses: github-actions-x/commit@v2.8
-        with: 
-          github-token: ${{github.token}}
-          push-branch: master
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@master
+#   release:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v1
+#       - uses: actions/setup-node@v1
+#         with:
+#           node-version: 16.13.0
+#           registry-url: https://registry.npmjs.org/
+#       - run: yarn install
+#       - name: 'Git Configure'
+#         uses: dawidd6/action-git-user-config@v1.0.0
+#         with:
+#           token: ${{github.token}}
+#           username: ${{github.actor}}
+#       - run: yarn release
+#       - name: 'Git Push'
+#         uses: github-actions-x/commit@v2.8
+#         with: 
+#           github-token: ${{github.token}}
+#           push-branch: master
       
   publish:
     runs-on: ubuntu-latest
