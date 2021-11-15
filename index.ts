@@ -1,26 +1,11 @@
-import {
-  start,
-  loadMicroApp,
-  prefetchApps,
-  initGlobalState,
-  MicroAppStateActions,
-  addGlobalUncaughtErrorHandler,
-  removeGlobalUncaughtErrorHandler
-} from 'qiankun';
+import * as QK from 'qiankun';
 import { QKOption, UseMicroAppOption } from './src/typings';
 import UseMicroApp from './src/microApps';
 import UseApp from './src/container';
 
-export type QkMicroAppStateActions = MicroAppStateActions;
+export type QkMicroAppStateActions = QK.MicroAppStateActions;
 
-export {
-  start,
-  initGlobalState,
-  loadMicroApp,
-  prefetchApps,
-  addGlobalUncaughtErrorHandler,
-  removeGlobalUncaughtErrorHandler
-};
+export default QK;
 
 export const QKRegisterApp = (option: QKOption) => new UseApp(option);
 
