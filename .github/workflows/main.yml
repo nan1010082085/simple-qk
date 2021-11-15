@@ -12,6 +12,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@master
+        
   release: 
     needs: build
     runs-on: ubuntu-latest
@@ -32,16 +33,17 @@ jobs:
         uses: github-actions-x/commit@v2.8
         with: 
           github-token: ${{github.token}}
-          push-branch: master
-      
-#   publish:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v1
-#       - uses: actions/setup-node@v1
-#         with:
-#           node-version: 16.13.0
-#           registry-url: https://registry.npmjs.org/
-#       - run: npm publish
-#         env:
-#           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
+          push-branch: master   
+          
+  publish:
+    needs: release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 16.13.0
+          registry-url: https://registry.npmjs.org/
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.npm_token}}
