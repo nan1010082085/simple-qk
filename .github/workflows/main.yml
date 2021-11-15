@@ -24,6 +24,8 @@ jobs:
           node-version: 16.13.0
 #           registry-url: https://registry.npmjs.org/
       - run: npm install
+      - run: git config --global user.email "nan1010082085@163.com"
+      - run: git config --global user.name "yangdongnan"
       - run: npm run release
       
 #   publish:
