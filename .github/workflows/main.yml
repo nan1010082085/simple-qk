@@ -18,11 +18,11 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: 'Release'
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1
         with:
           node-version: 16.13.0
-          registry-url: https://registry.npmjs.org/
+#           registry-url: https://registry.npmjs.org/
       - run: npm run release
       
 #   publish:
