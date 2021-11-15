@@ -1,6 +1,6 @@
 {
   "name": "simple-qk",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "utils",
   "main": "index.ts",
   "types": "./src/typings.ts",
