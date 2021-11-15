@@ -22,10 +22,13 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 16.13.0
-#           registry-url: https://registry.npmjs.org/
+          registry-url: https://registry.npmjs.org/
       - run: npm install
-      - run: git config --global user.email "nan1010082085@163.com"
-      - run: git config --global user.name "yangdongnan"
+      - name: 'Configure git'
+        uses: dawidd6/action-git-user-config@v1.0.0
+        with:
+          token: ${{github.token}}
+          username: ${{github.actor}}
       - run: npm run release
       
 #   publish:
