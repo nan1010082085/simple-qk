@@ -9,7 +9,8 @@
     "test": "jest src/__test__",
     "commit": "git add . & git-cz",
     "precommit": "lint-staged",
-    "lint": "lint-staged"
+    "lint": "lint-staged",
+    "release": "standard-version"
   },
   "files": [
     "src",
@@ -21,6 +22,7 @@
   "dependencies": {
     "lodash": "^4.17.21",
     "qiankun": "^2.5.1",
+    "standard-version": "^9.3.2",
     "typescript": "^4.4.4",
     "vue": "^2.6.14",
     "vue-property-decorator": "^9.1.2"

@@ -1,4 +1,6 @@
 node_modules
+.eslintrc.js
+.prettierrc.js
 .gitignore
 tsconfig.json
 tslint.json
