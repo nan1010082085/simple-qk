@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/nan1010082085/simple-qk/compare/v1.4.2...v1.5.0) (2021-11-16)
+
+
+### Features
+
+* **rollup:** 优化 rollup.config.js 打包逻辑 ([8ce269d](https://github.com/nan1010082085/simple-qk/commit/8ce269d36eb1bcaf580a13ccb1d2ea74c0555e86))
+
 ### [1.4.2](https://github.com/nan1010082085/simple-qk/compare/v1.4.1...v1.4.2) (2021-11-16)
 
 ### [1.4.1](https://github.com/nan1010082085/simple-qk/compare/v1.4.0...v1.4.1) (2021-11-16)
