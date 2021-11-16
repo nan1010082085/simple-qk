@@ -2,7 +2,7 @@
   "name": "simple-qk",
   "version": "1.3.2",
   "description": "utils",
-  "main": "src/index.ts",
+  "main": "lib/index.js",
   "module": "lib/types/index.d.ts",
   "scripts": {
     "build": "rm -r lib & rollup -c",

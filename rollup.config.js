@@ -9,14 +9,16 @@ import RollupPluginCopy from 'rollup-plugin-copy';
 
 const config = [
   {
-    input: pkg.main,
-    output: {
-      dir: 'lib',
-      format: 'cjs',
-      name: pkg.name,
-      exports: 'named',
-      sourcemap: true
-    },
+    input: 'src/index.ts',
+    output: [
+      {
+        dir: 'lib',
+        format: 'cjs',
+        name: pkg.name,
+        exports: 'named',
+        sourcemap: true
+      }
+    ],
     acornInjectPlugins: [jsx()],
     plugins: [
       commonjs(),
