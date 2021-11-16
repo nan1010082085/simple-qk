@@ -3,8 +3,8 @@
   "version": "1.4.2",
   "description": "utils",
   "main": "lib/index.js",
-  "module": "lib/types/src/index.d.ts",
-  "types": "lib/types/src/index.d.ts",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rm -r lib & rollup -c",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",

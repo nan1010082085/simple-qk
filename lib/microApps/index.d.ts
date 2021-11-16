@@ -21,4 +21,3 @@ declare class UseMicroApp {
     start(): void;
 }
 export default UseMicroApp;
-//# sourceMappingURL=index.d.ts.map

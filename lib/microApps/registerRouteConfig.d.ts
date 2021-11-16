@@ -4,4 +4,3 @@ export declare function registerRouteConfig(routes: RouteConfig[], option: Regis
     mode: string;
     routes: RouteConfig[];
 };
-//# sourceMappingURL=registerRouteConfig.d.ts.map

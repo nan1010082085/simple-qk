@@ -25,14 +25,14 @@ const config = [
       resolve({
         extensions: ['.tsx', '.ts', '.jsx', '.js']
       }),
-      typescript(),
+      typescript({ include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'] }),
       babel({
         extensions: [...DEFAULT_EXTENSIONS, '.ts', 'tsx'],
         exclude: 'node_modules/**',
         babelHelpers: 'bundled'
       }),
       RollupPluginCopy({
-        targets: [{ src: 'src/typings', dest: 'lib/types/src' }]
+        targets: [{ src: 'src/typings', dest: 'lib' }]
       })
     ]
   }

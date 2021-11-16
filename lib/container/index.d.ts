@@ -6,4 +6,3 @@ declare class UseApp {
     useAppAction($routes?: any, $config?: any, $action?: any): void;
 }
 export default UseApp;
-//# sourceMappingURL=index.d.ts.map
