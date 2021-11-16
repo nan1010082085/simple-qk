@@ -33,7 +33,6 @@ jobs:
         uses: matheusalbino/git-commit@v1.0.1
         with: 
           github-token: ${{github.token}}
-          push-branch: master
           message: 'chore(*): build lib'
       - run: yarn release
       - name: 'Git Push'
