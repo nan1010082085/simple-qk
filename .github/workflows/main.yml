@@ -29,6 +29,12 @@ jobs:
           token: ${{github.token}}
           username: ${{github.actor}}
       - run: yarn build
+      - name: 'Commit Build'
+        uses: matheusalbino/git-commit@v1.0.1
+        with: 
+          github-token: ${{github.token}}
+          push-branch: master
+          message: 'build lib'
       - run: yarn release
       - name: 'Git Push'
         uses: github-actions-x/commit@v2.8
