@@ -2,7 +2,7 @@
   "name": "simple-qk",
   "version": "1.4.0",
   "description": "utils",
-  "main": "lib/bundle/index.js",
+  "main": "lib/index.js",
   "module": "lib/types/src/index.d.ts",
   "types": "lib/types/src/index.d.ts",
   "scripts": {
