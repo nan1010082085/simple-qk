@@ -30,7 +30,7 @@ const config = [
         babelHelpers: 'bundled'
       }),
       RollupPluginCopy({
-        targets: [{ src: 'src/typings', dest: 'lib/types' }]
+        targets: [{ src: 'src/typings', dest: 'lib/types/src' }]
       })
     ]
   }
