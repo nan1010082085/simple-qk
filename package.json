@@ -5,13 +5,13 @@
   "main": "src/index.ts",
   "module": "lib/types/index.d.ts",
   "scripts": {
+    "build": "rm -r lib & rollup -c",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
-    "test": "jest src/__test__",
+    "test": "jest __tests__",
     "commit": "git add . & git-cz",
     "precommit": "lint-staged",
     "lint": "lint-staged",
-    "release": "standard-version",
-    "build": "rm -r lib & rollup -c"
+    "release": "standard-version"
   },
   "files": [
     "lib",

@@ -1,4 +1,4 @@
-import UseMicroApp from '../microApps';
+import UseMicroApp from '../src/microApps';
 
 const app: any = new UseMicroApp({
   option: {
