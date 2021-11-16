@@ -12,7 +12,7 @@ const config = [
     input: 'src/index.ts',
     output: [
       {
-        dir: 'lib',
+        dir: 'lib/bundle',
         format: 'cjs',
         name: pkg.name,
         exports: 'named',
