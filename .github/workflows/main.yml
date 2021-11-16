@@ -34,7 +34,7 @@ jobs:
         with: 
           github-token: ${{github.token}}
           push-branch: master
-          message: 'build lib'
+          message: 'chore(*): build lib'
       - run: yarn release
       - name: 'Git Push'
         uses: github-actions-x/commit@v2.8
