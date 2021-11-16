@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/nan1010082085/simple-qk/compare/v1.2.6...v1.3.0) (2021-11-16)
+
+
+### Features
+
+* **rollup:** add rollup.config.js ([b2ceb4a](https://github.com/nan1010082085/simple-qk/commit/b2ceb4a30a2c6e522dc15f6c9e8eda024cc1a8ea))
+
 ### [1.2.6](https://github.com/nan1010082085/simple-qk/compare/v1.2.5...v1.2.6) (2021-11-15)
 
 ### [1.2.5](https://github.com/nan1010082085/simple-qk/compare/v1.2.4...v1.2.5) (2021-11-15)
