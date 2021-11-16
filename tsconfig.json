@@ -10,19 +10,15 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "declaration": true,
+    "declarationDir": "lib/types",
+    "declarationMap": true,
+    "removeComments": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": ["@types/jest", "@types/node"],
-    "lib": ["esnext", "dom", "dom.iterable", "es2015.Promise", "scripthost"]
+    "lib": ["esnext", "es5", "es6", "es7", "dom"]
   },
-  "include": [
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "__tests__/**/*.ts",
-    "tests/**/*.ts",
-    "tests/**/*.tsx",
-    "index.ts"
-  ],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "__tests__/**/*.ts", "tests/**/*.ts"],
   "exclude": ["node_modules"]
 }

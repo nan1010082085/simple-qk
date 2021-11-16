@@ -1,3 +1,5 @@
+import {FrameworkLifeCycles} from 'qiankun'
+
 declare global {
   interface Window {
     __POWERED_BY_QIANKUN__?: boolean | undefined;
@@ -14,7 +16,6 @@ declare global {
     }
   }
 }
-
 export interface RoutesMicroApp {
   // 应用名称
   name: string;

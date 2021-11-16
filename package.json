@@ -2,19 +2,19 @@
   "name": "simple-qk",
   "version": "1.2.6",
   "description": "utils",
-  "main": "index.ts",
-  "types": "./src/typings.ts",
+  "main": "src/index.ts",
+  "module": "lib/types/index.d.ts",
   "scripts": {
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "jest src/__test__",
     "commit": "git add . & git-cz",
     "precommit": "lint-staged",
     "lint": "lint-staged",
-    "release": "standard-version"
+    "release": "standard-version",
+    "build": "rm -r lib & rollup -c"
   },
   "files": [
-    "src",
-    "index.ts",
+    "lib",
     "package.json"
   ],
   "author": "yangdongnan",
@@ -23,19 +23,25 @@
     "lodash": "^4.17.21",
     "qiankun": "^2.5.1",
     "standard-version": "^9.3.2",
-    "typescript": "^4.4.4",
     "vue": "^2.6.14",
+    "vue-class-component": "^7.2.6",
     "vue-property-decorator": "^9.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
+    "@rollup/plugin-babel": "^5.3.0",
+    "@rollup/plugin-commonjs": "^21.0.1",
+    "@rollup/plugin-node-resolve": "^13.0.6",
+    "@rollup/plugin-typescript": "^8.3.0",
     "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.176",
     "@types/node": "^16.11.7",
     "@typescript-eslint/eslint-plugin": "^5.2.0",
     "@typescript-eslint/parser": "^5.2.0",
+    "@vue/babel-preset-jsx": "^1.2.4",
+    "acorn-jsx": "^5.3.2",
     "babel-jest": "^27.3.1",
     "commitizen": "^4.2.4",
     "conventional-changelog": "^3.1.24",
@@ -44,7 +50,10 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^4.0.0",
     "jest": "^27.3.1",
-    "lint-staged": "^11.2.6"
+    "lint-staged": "^11.2.6",
+    "rollup": "^2.60.0",
+    "rollup-plugin-copy": "^3.4.0",
+    "typescript": "^4.4.4"
   },
   "lint-staged": {
     "src/**/*.{js,ts,tsx}": [
