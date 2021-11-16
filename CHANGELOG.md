@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/nan1010082085/simple-qk/compare/v1.3.3...v1.4.0) (2021-11-16)
+
+
+### Features
+
+* **package:** change main dir ([85199c9](https://github.com/nan1010082085/simple-qk/commit/85199c96b58344d86c439b1809395d9b2870be50))
+
 ### [1.3.3](https://github.com/nan1010082085/simple-qk/compare/v1.3.2...v1.3.3) (2021-11-16)
 
 ### [1.3.2](https://github.com/nan1010082085/simple-qk/compare/v1.3.1...v1.3.2) (2021-11-16)
