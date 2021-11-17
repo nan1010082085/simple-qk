@@ -1,5 +1,10 @@
-import { RouteConfig, UseMicroAppOption } from './../typings';
+import { RouteConfig, UseMicroAppOption } from '../typings';
 import { registerRouteConfig } from './registerRouteConfig';
+
+/**
+ * @author: Yang Dongnan
+ * 2021年11月17日
+ */
 
 class UseMicroApp {
   // 微应用路由机

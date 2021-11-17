@@ -1,3 +1,8 @@
+/**
+ * @author: Yang Dongnan
+ * 2021年11月17日
+ */
+
 import { RoutesMicroApp, MicroAppsConfigOption } from '../typings';
 
 const getActiveRule = (hash: string) => (location: Location) => location.hash.startsWith(hash);

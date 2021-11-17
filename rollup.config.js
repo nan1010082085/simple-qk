@@ -1,11 +1,30 @@
+/**
+ * @author Yang Dongnan
+ * 2021年11月17日
+ */
+
 import pkg from './package.json';
-import resolve from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
-import commonjs from '@rollup/plugin-commonjs';
-import babel from '@rollup/plugin-babel';
-import { DEFAULT_EXTENSIONS } from '@babel/core';
-import jsx from 'acorn-jsx';
+import Resolve from '@rollup/plugin-node-resolve';
+import Typescript from '@rollup/plugin-typescript';
+import Commonjs from '@rollup/plugin-commonjs';
+import Babel from '@rollup/plugin-babel';
 import RollupPluginCopy from 'rollup-plugin-copy';
+import VuePlugin from 'rollup-plugin-vue';
+import Jsx from 'acorn-jsx';
+import { DEFAULT_EXTENSIONS } from '@babel/core';
+
+import fs from 'fs';
+import rimraf from 'rimraf';
+
+const fileList = ['es', 'lib'];
+fileList.forEach((filename) => {
+  if (fs.existsSync(filename)) {
+    console.log(`[EXIST OLD FILE] to delete ...`);
+    rimraf(filename, {}, () => {
+      console.log(`[DELETE] ${filename} success .`);
+    });
+  }
+});
 
 const config = [
   {
@@ -19,15 +38,15 @@ const config = [
         sourcemap: true
       }
     ],
-    acornInjectPlugins: [jsx()],
+    external: ['vue'],
+    acornInjectPlugins: [Jsx()],
     plugins: [
-      commonjs(),
-      resolve({
-        extensions: ['.tsx', '.ts', '.jsx', '.js']
-      }),
-      typescript({ include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'] }),
-      babel({
-        extensions: [...DEFAULT_EXTENSIONS, '.ts', 'tsx'],
+      Commonjs(),
+      Resolve(),
+      VuePlugin(),
+      Typescript({ include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.vue'] }),
+      Babel({
+        extensions: [...DEFAULT_EXTENSIONS, '.ts', '.tsx', '.vue'],
         exclude: 'node_modules/**',
         babelHelpers: 'bundled'
       }),

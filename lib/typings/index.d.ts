@@ -1,3 +1,8 @@
+/**
+ * @author: Yang Dongnan
+ * 2021年11月17日
+ */
+
 import {FrameworkLifeCycles} from 'qiankun'
 
 declare global {

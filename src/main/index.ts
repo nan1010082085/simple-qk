@@ -1,3 +1,8 @@
+/**
+ * @author: Yang Dongnan
+ * 2021年11月17日
+ */
+
 import { QKOption } from '../typings';
 import { registerMicroApps, start } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';

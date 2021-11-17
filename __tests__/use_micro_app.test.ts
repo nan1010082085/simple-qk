@@ -1,4 +1,9 @@
-import UseMicroApp from '../src/microApps';
+/**
+ * @author: Yang Dongnan
+ * 2021年11月17日
+ */
+
+import UseMicroApp from '../src/apps';
 
 const app: any = new UseMicroApp({
   option: {

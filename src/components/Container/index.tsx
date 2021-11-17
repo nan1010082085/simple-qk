@@ -1,11 +1,14 @@
-import { CreateElement, VNode } from 'vue/types';
-import { Vue, Component } from 'vue-property-decorator';
+/**
+ * @author: Yang Dongnan
+ * 2021年11月17日
+ */
 
-@Component({
-  name: 'Container'
-})
-export default class Container extends Vue {
-  render(h: CreateElement): VNode {
-    return <router-view />;
+import { defineComponent } from 'vue';
+export default defineComponent({
+  name: 'Container',
+  setup() {
+    return () => {
+      return <route-view />;
+    };
   }
-}
+});

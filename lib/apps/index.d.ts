@@ -1,4 +1,4 @@
-import { UseMicroAppOption } from './../typings';
+import { UseMicroAppOption } from '../typings';
 declare class UseMicroApp {
     private $routes;
     private $activeRule;
