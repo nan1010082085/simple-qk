@@ -3,8 +3,8 @@
   "version": "1.5.0",
   "description": "utils",
   "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "es/index.d.ts",
+  "module": "lib/index.js",
+  "types": "lib/index.d.ts",
   "scripts": {
     "build": "rollup -c",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
