@@ -17,7 +17,7 @@
   "files": [
     "lib",
     "es",
-    "CHNAGELOG.md",
+    "CHANGELOG.md",
     "README.md",
     "package.json"
   ],
