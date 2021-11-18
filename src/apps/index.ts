@@ -29,7 +29,7 @@ class UseMicroApp {
     this.$log = log;
     this.$name = name;
     this.$routes = routes;
-    this.$component = component ? component : () => import('../components/Container');
+    this.$component = component ? component : () => import('../template/Container');
     this.$activeRule = `${name.split('-')[0]}`;
     this.$local = local ? '/' : `${name}`;
     this.$store = store;
