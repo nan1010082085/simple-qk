@@ -3,7 +3,7 @@
  * 2021年11月17日
  */
 
-import {FrameworkLifeCycles} from 'qiankun'
+import { FrameworkLifeCycles } from 'qiankun';
 
 declare global {
   interface Window {
@@ -59,31 +59,34 @@ export interface MicroAppsConfigOption {
   mode: 'hash' | 'history';
   container?: string;
   env: 'dev' | 'prod';
-  devParam?: { [T: string]: string };
+  devParam?: { [T: string]: string }[];
 }
 
 /**
  * 注册路由路由配置参数
- * @param mode 路由模式
+ * @param history 路由模式
  * @param component hash 模式下路由页面 component = () => import('...')
  * @param activeRule 微应用模式下激活路径
  * @param local 单独访问时
  */
 export interface RegisterRouteConfigOption {
-  mode: 'hash' | 'history';
+  history: 'hash' | 'history' | (() => void) | any;
   component: Promise<any> | (() => void);
   activeRule: string;
   local: string;
 }
 
 /**
+ * @param version 版本
  * @param {object} option routes vue路由对象集 name 组件名称 components 路由注册返回的唯一组件, store vuex状态 log 是否开启日志
  * @param {object} Vue 实例
  * @param {object} VueRouter 路由实例
  * @param {object} render vue默认app组件
  */
 export interface UseMicroAppOption {
+  version?: string;
   option: {
+    history: 'hash' | 'history' | (() => void) | any;
     routes: any;
     name: any;
     component?: any;

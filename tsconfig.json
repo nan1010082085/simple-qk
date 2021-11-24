@@ -11,14 +11,14 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "declarationDir": "es",
+    // "declarationDir": "es",
     "declarationMap": false,
     "removeComments": true,
     "sourceMap": true,
     "baseUrl": ".",
     "types": ["@types/jest", "@types/node"],
-    "lib": ["esnext", "es5", "es6", "es7", "dom"]
+    "lib": ["esnext", "es2015", "es2016", "es2017", "dom"]
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "__tests__/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.vue", "components/**/*.ts", "components/**/*.tsx", "__tests__/**/*.ts"],
   "exclude": ["node_modules", "lib", "es"]
 }

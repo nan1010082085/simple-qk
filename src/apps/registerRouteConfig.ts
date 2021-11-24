@@ -14,25 +14,37 @@ import { RouteConfig, RegisterRouteConfigOption } from '../typings';
 export function registerRouteConfig(
   routes: RouteConfig[],
   option: RegisterRouteConfigOption
-): { base: string; mode: string; routes: RouteConfig[] } {
-  const { mode, component, activeRule, local } = option;
-  const base = window.__POWERED_BY_QIANKUN__ ? `/${activeRule}/` : local;
+): { base?: string; mode?: string; history?: any; routes: any[] } {
+  const { history, component, activeRule, local } = option;
+  const isHash = history === 'hash' || typeof history !== 'string';
+  const isVue3Router = typeof history !== 'string';
   routes.forEach((route) => {
-    route.path = window.__POWERED_BY_QIANKUN__ && mode === 'hash' ? `${route.path}` : `/${route.path}`;
+    if (window.__POWERED_BY_QIANKUN__ && isHash) {
+      route.path = `${route.path}`;
+    } else {
+      route.path = `/${route.path}`;
+    }
   });
 
+  const base = window.__POWERED_BY_QIANKUN__ ? `/${activeRule}/` : local;
+  const common = isVue3Router
+    ? {
+        history: window.__POWERED_BY_QIANKUN__ ? history(`/${activeRule}/`) : history(`${local}`)
+      }
+    : {
+        base,
+        mode: history
+      };
   let config = {
-    base,
-    mode,
+    ...common,
     routes
   };
-  if (mode === 'hash') {
+  if (isHash) {
     if (!component) {
       throw new Error('[vue-router] component is undefined');
     }
     config = {
-      base,
-      mode,
+      ...common,
       routes: [
         {
           path: base,
@@ -43,5 +55,6 @@ export function registerRouteConfig(
       ]
     };
   }
+
   return config;
 }

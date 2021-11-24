@@ -6,10 +6,13 @@
   "module": "es/index.js",
   "types": "es/index.d.ts",
   "scripts": {
-    "build": "rollup -c",
+    "build": "yarn rimraf && yarn build:es && yarn build:up",
+    "rimraf": "rimraf es && rimraf lib && rimraf com",
+    "build:es": "tsc -p ./src/tsconfig.json",
+    "build:up": "rollup -c",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "test": "jest __tests__",
-    "commit": "git add . & git-cz",
+    "commit": "git add . && git-cz",
     "precommit": "lint-staged",
     "lint": "lint-staged",
     "release": "standard-version"

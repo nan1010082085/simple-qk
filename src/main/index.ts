@@ -37,13 +37,14 @@ class UseApp {
       if (!$config.devParam) {
         throw new Error('[QK] default url address not exists !');
       }
-
+      const entryArr: any = [];
       for (const key in $config.devParam) {
         if (Object.prototype.hasOwnProperty.call($config.devParam, key)) {
           const url = $config.devParam[key];
-          registerMicroAppsConfig($routes, Object.assign($config, { devParam: { key, url } }));
+          entryArr.push({ key, url });
         }
       }
+      registerMicroAppsConfig($routes, Object.assign($config, { devParam: entryArr }));
     }
 
     // 注册微应用
