@@ -24,7 +24,7 @@ export const activeRuleCheck = (mode: 'hash' | 'history', name: string) => {
 export function registerMicroAppsConfig(microApps: RoutesMicroApp[], option: MicroAppsConfigOption) {
   const { mode, container = '#container-micro-app', env = 'dev', devParam = [] } = option;
   microApps.forEach((apps: RoutesMicroApp) => {
-    const entry = devParam.find(({ key, url }: any) => key === apps.name);
+    const entry = devParam && devParam.find(({ key, url }: any) => key === apps.name) || null;
     apps.activeRule = activeRuleCheck(mode, apps.name);
     apps.container = container;
     apps.entry = entry && env ? entry.url : `/${apps.name}/`;
