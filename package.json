@@ -1,6 +1,6 @@
 {
   "name": "simple-qk",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "utils",
   "main": "lib/index.js",
   "module": "es/index.js",
