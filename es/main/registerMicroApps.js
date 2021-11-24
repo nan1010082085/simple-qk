@@ -5,7 +5,7 @@ export const activeRuleCheck = (mode, name) => {
 export function registerMicroAppsConfig(microApps, option) {
     const { mode, container = '#container-micro-app', env = 'dev', devParam = [] } = option;
     microApps.forEach((apps) => {
-        const entry = devParam.find(({ key, url }) => key === apps.name);
+        const entry = devParam && devParam.find(({ key, url }) => key === apps.name) || null;
         apps.activeRule = activeRuleCheck(mode, apps.name);
         apps.container = container;
         apps.entry = entry && env ? entry.url : `/${apps.name}/`;
