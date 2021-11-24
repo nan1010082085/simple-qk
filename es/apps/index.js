@@ -21,7 +21,8 @@ class UseMicroApp {
         this.$name = name;
         this.$history = history;
         this.$routes = routes;
-        (this.$component = component), (this.$activeRule = `${name.split('-')[0]}`);
+        this.$component = component;
+        this.$activeRule = `${name.split('-')[0]}`;
         this.$local = local ? '/' : `${name}`;
         this.$store = store;
         this.$VueRouter = VueRouter;
