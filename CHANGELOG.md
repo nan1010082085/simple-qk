@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.11.0](https://github.com/nan1010082085/simple-qk/compare/v1.10.3...v1.11.0) (2021-12-14)
+
+
+### Features
+
+* **build:** 增加 es 打包文件 ([b8ef866](https://github.com/nan1010082085/simple-qk/commit/b8ef8663f53c2b91308dd90b599855166d024ddf))
+
 ### [1.10.3](https://github.com/nan1010082085/simple-qk/compare/v1.10.2...v1.10.3) (2021-12-14)
 
 ### [1.10.2](https://github.com/nan1010082085/simple-qk/compare/v1.10.1...v1.10.2) (2021-12-14)
