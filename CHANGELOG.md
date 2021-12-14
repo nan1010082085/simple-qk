@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.16.0](https://github.com/nan1010082085/simple-qk/compare/v1.15.0...v1.16.0) (2021-12-14)
+
+
+### Features
+
+* **log:** 增加日志信息， 日志开启控制 ([85947d3](https://github.com/nan1010082085/simple-qk/commit/85947d34b1a7bed7eb0897afdf03a2535394bc89))
+
 ## [1.15.0](https://github.com/nan1010082085/simple-qk/compare/v1.14.0...v1.15.0) (2021-12-14)
 
 
