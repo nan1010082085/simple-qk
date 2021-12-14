@@ -1,7 +1,8 @@
 import { QKOption } from '../typings';
 import { FrameworkConfiguration } from 'qiankun';
 declare class UseApp {
-    constructor({ isMicro, routes, config, action }: QKOption);
+    $logs: boolean;
+    constructor({ isMicro, routes, config, action }: QKOption, isLogs: boolean);
     start(option?: FrameworkConfiguration): void;
     useAppAction($routes?: any, $config?: any, $action?: any): void;
 }

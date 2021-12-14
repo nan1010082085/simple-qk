@@ -7,9 +7,16 @@ const beforeMount = async (app) => {
     console.log('[QK] before mount', app.name);
 };
 class UseApp {
-    constructor({ isMicro = false, routes, config, action }) {
+    $logs = false;
+    constructor({ isMicro = false, routes, config, action }, isLogs) {
         if (!isMicro) {
             this.useAppAction(routes, config, action);
+        }
+        if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
+            this.$logs = isLogs;
+        }
+        else {
+            this.$logs = config?.env === 'dev';
         }
     }
     start(option) {

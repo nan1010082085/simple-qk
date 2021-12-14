@@ -1973,6 +1973,11 @@ braces@^3.0.1:
   dependencies:
     fill-range "^7.0.1"
 
+browser-log-color@^0.0.17:
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/browser-log-color/-/browser-log-color-0.0.17.tgz#3a5acba259d95b77b2e519a36b8a86b81cb607c9"
+  integrity sha512-Hap40JAu83xniiOT2WJeeKONQwn+Qmm8W/cYQcEQgtNQ7WNz7KuR0wJMhdPbJOJTGdMAeaKOlhDXtgIzpZlijA==
+
 browser-process-hrtime@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/browser-process-hrtime/-/browser-process-hrtime-1.0.0.tgz#3c9b4b7d782c8121e56f10106d84c0d0ffc94626"

@@ -16,9 +16,16 @@ const beforeMount = async (app: any) => {
 };
 
 class UseApp {
-  constructor({ isMicro = false, routes, config, action }: QKOption) {
+  public $logs: boolean = false;
+
+  constructor({ isMicro = false, routes, config, action }: QKOption, isLogs: boolean) {
     if (!isMicro) {
       this.useAppAction(routes, config, action);
+    }
+    if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
+      this.$logs = isLogs;
+    } else {
+      this.$logs = config?.env === 'dev';
     }
   }
 
@@ -47,7 +54,6 @@ class UseApp {
       }
       registerMicroAppsConfig($routes, Object.assign($config, { devParam: entryArr }));
     }
-
     // 注册微应用
     registerMicroApps(
       $routes,

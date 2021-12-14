@@ -1,3 +1,4 @@
+import { BrowserLogColor as LogColor } from 'browser-log-color';
 import { RouteConfig, UseMicroAppParam } from '../typings';
 import { registerRouteConfig } from './registerRouteConfig';
 
@@ -7,9 +8,34 @@ import { registerRouteConfig } from './registerRouteConfig';
  */
 
 class UseMicroApp {
+  private $version: string | number = '2';
+  // 微应用路由模式
+  private $history: any = 'hash';
+  // 微应用路由集
+  private $routes: RouteConfig[] = [];
+  // 应用激活路径
+  private $activeRule: any = '';
+  // 独立运行
+  private $local: any = true;
+  // 微应用路由加载组件
+  private $component: any = '';
+  private $log!: boolean;
+  private $name!: string;
+  private $instance: { $destroy: any; $el: any } | any = null;
+  private $Vue!: any;
+  private $render!: any;
+  private $VueRouter!: any;
+  private $store!: any;
+  private $router!: any;
+
   constructor({ version = '2', option, Vue, VueRouter, render }: UseMicroAppParam) {
     const { history, routes, name, component, store, local = false, log = true } = option;
-    this.version = version;
+
+    if (!component) {
+      throw new Error('component is not define');
+    }
+
+    this.$version = version;
     this.$log = log;
     this.$name = name;
     this.$history = history;
@@ -22,26 +48,6 @@ class UseMicroApp {
     this.$Vue = Vue;
     this.$render = render;
   }
-
-  private version!: string;
-  // 微应用路由模式
-  private $history!: any;
-  // 微应用路由集
-  private $routes!: RouteConfig[];
-  // 应用激活路径
-  private $activeRule!: any;
-  // 独立运行
-  private $local!: any;
-  // 微应用路由加载组件
-  private $component!: any;
-  private $log!: boolean;
-  private $name!: string;
-  private $instance: { $destroy: any; $el: any } | any = null;
-  private $Vue!: any;
-  private $render!: any;
-  private $VueRouter!: any;
-  private $store!: any;
-  private $router!: any;
 
   // 创建vue2.x实例
   private v2(container: any) {
@@ -70,7 +76,7 @@ class UseMicroApp {
       local: this.$local
     });
     this.$router = new this.$VueRouter(routeOption);
-    this.version === '2' ? this.v2(container) : this.v3(container);
+    Number(this.$version) === 2 ? this.v2(container) : this.v3(container);
   }
 
   bootstrap() {
@@ -82,7 +88,7 @@ class UseMicroApp {
   }
 
   unmount() {
-    if (this.version === '2') {
+    if (this.$version === '2') {
       this.$instance.$destroy();
       this.$instance.$el.innerHTML = '';
     } else {
@@ -100,7 +106,20 @@ class UseMicroApp {
 
   start() {
     if (this.$log) {
-      console.log(`[start ${this.$name} app] is primary app :`, window.__POWERED_BY_QIANKUN__);
+      LogColor.bgBlack(`[start ${this.$name} app] is primary app :`, window.__POWERED_BY_QIANKUN__);
+      LogColor.bgGreen(`=============[app info start]`);
+      const table = {
+        是否有主应用: window.__POWERED_BY_QIANKUN__,
+        应用名称: this.$name,
+        vue版本: this.$version,
+        是否开启Log: this.$log,
+        路由模式: this.$history,
+        路由地址: this.$activeRule,
+        子应用入口: this.$component,
+        是否存在store: this.$store ? true : false
+      };
+      console.table(table);
+      LogColor.bgGreen(`=============[app info end]`);
     }
     if (window.__POWERED_BY_QIANKUN__) {
       // @ts-ignore

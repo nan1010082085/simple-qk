@@ -90,6 +90,7 @@ export interface UseMicroAppOption {
   name: any;
   component: any;
   store?: any;
+  log?: boolean;
   [T: string]: any;
 }
 
@@ -101,7 +102,7 @@ export interface UseMicroAppOption {
  * @param {object} render vue默认app组件
  */
 export interface UseMicroAppParam {
-  version?: string;
+  version?: string | number;
   option: UseMicroAppOption;
   Vue: any;
   VueRouter: any;
