@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.12.0](https://github.com/nan1010082085/simple-qk/compare/v1.11.0...v1.12.0) (2021-12-14)
+
+
+### Features
+
+* **main:** register app on start = (option?: type) => start(option) ([b473959](https://github.com/nan1010082085/simple-qk/commit/b473959f9330fb088794ec4090ed949e543c4d53))
+
 ## [1.11.0](https://github.com/nan1010082085/simple-qk/compare/v1.10.3...v1.11.0) (2021-12-14)
 
 
