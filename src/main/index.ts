@@ -16,14 +16,15 @@ const beforeMount = async (app: any) => {
 };
 
 class UseApp {
-  public start = (option?: FrameworkConfiguration) => start(option);
-
   constructor({ isMicro = false, routes, config, action }: QKOption) {
     if (!isMicro) {
       this.useAppAction(routes, config, action);
     }
   }
 
+  start(option?: FrameworkConfiguration) {
+    start(option);
+  }
   useAppAction($routes: any = [], $config: any = { mode: 'hash', env: 'dev' }, $action: any = {}) {
     if (!$routes || !$routes.length) {
       throw new Error('[QK] micro apps routes is undefined .');
