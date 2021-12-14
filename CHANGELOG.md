@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.13.0](https://github.com/nan1010082085/simple-qk/compare/v1.12.0...v1.13.0) (2021-12-14)
+
+
+### Features
+
+* **main:** change main class function ([09ac8b8](https://github.com/nan1010082085/simple-qk/commit/09ac8b8b77b52b55db62c8efd7c01f9cf494035f))
+
 ## [1.12.0](https://github.com/nan1010082085/simple-qk/compare/v1.11.0...v1.12.0) (2021-12-14)
 
 
