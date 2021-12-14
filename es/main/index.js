@@ -1,5 +1,6 @@
 import { registerMicroApps, start } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';
+import { BrowserLogColor as LogColor } from 'browser-log-color';
 const beforeLoad = async (app) => {
     console.log('[QK] before load', app.name);
 };
@@ -8,16 +9,14 @@ const beforeMount = async (app) => {
 };
 class UseApp {
     $logs = false;
-    constructor({ isMicro = false, routes, config, action }, isLogs) {
-        if (!isMicro) {
-            this.useAppAction(routes, config, action);
-        }
+    constructor({ routes, config, action }, isLogs) {
         if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
             this.$logs = isLogs;
         }
         else {
             this.$logs = config?.env === 'dev';
         }
+        this.useAppAction(routes, config, action);
     }
     start(option) {
         start(option);
@@ -46,6 +45,10 @@ class UseApp {
             beforeLoad,
             beforeMount
         }, $action));
+        if (this.$logs) {
+            LogColor.bgBlack('注册应用信息');
+            console.table($routes);
+        }
     }
 }
 export default UseApp;

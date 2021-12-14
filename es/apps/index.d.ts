@@ -15,13 +15,13 @@ declare class UseMicroApp {
     private $store;
     private $router;
     constructor({ version, option, Vue, VueRouter, render }: UseMicroAppParam);
-    private v2;
-    private v3;
     render(props?: any): void;
     bootstrap(): Promise<void>;
     mount(props: any): void;
     unmount(): void;
     update(props: any): Promise<any>;
     start(): void;
+    private v2;
+    private v3;
 }
 export default UseMicroApp;

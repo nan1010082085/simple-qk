@@ -109,8 +109,13 @@ export interface UseMicroAppParam {
   render: any;
 }
 
+/**
+ * 注册子应用
+ * @param routes 子应用集合
+ * @param {MicroAppsConfigOption} config 子应用配置项
+ * @param {FrameworkLifeCycles} action 回调
+ */
 export interface QKOption {
-  isMicro?: boolean;
   routes?: RoutesMicroApp[];
   config?: MicroAppsConfigOption;
   action?: FrameworkLifeCycles<any>;

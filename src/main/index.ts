@@ -6,6 +6,7 @@
 import { QKOption } from '../typings';
 import { FrameworkConfiguration, registerMicroApps, start } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';
+import { BrowserLogColor as LogColor } from 'browser-log-color';
 
 const beforeLoad = async (app: any) => {
   console.log('[QK] before load', app.name);
@@ -18,21 +19,20 @@ const beforeMount = async (app: any) => {
 class UseApp {
   public $logs: boolean = false;
 
-  constructor({ isMicro = false, routes, config, action }: QKOption, isLogs: boolean) {
-    if (!isMicro) {
-      this.useAppAction(routes, config, action);
-    }
+  constructor({ routes, config, action }: QKOption, isLogs: boolean) {
     if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
       this.$logs = isLogs;
     } else {
       this.$logs = config?.env === 'dev';
     }
+    this.useAppAction(routes, config, action);
   }
 
-  start(option?: FrameworkConfiguration) {
+  public start(option?: FrameworkConfiguration) {
     start(option);
   }
-  useAppAction($routes: any = [], $config: any = { mode: 'hash', env: 'dev' }, $action: any = {}) {
+
+  private useAppAction($routes: any = [], $config: any = { mode: 'hash', env: 'dev' }, $action: any = {}) {
     if (!$routes || !$routes.length) {
       throw new Error('[QK] micro apps routes is undefined .');
     }
@@ -65,6 +65,10 @@ class UseApp {
         $action
       )
     );
+    if (this.$logs) {
+      LogColor.bgBlack('注册应用信息');
+      console.table($routes);
+    }
   }
 }
 

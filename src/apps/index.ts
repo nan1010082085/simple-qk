@@ -49,6 +49,70 @@ class UseMicroApp {
     this.$render = render;
   }
 
+  public render(props: any = {}): void {
+    const { container } = props;
+    const routeOption: any = registerRouteConfig(this.$routes, {
+      history: this.$history,
+      component: this.$component,
+      activeRule: this.$activeRule,
+      local: this.$local
+    });
+    this.$router = new this.$VueRouter(routeOption);
+    Number(this.$version) === 2 ? this.v2(container) : this.v3(container);
+  }
+
+  public bootstrap() {
+    return Promise.resolve();
+  }
+
+  public mount(props: any) {
+    this.render(props);
+  }
+
+  public unmount() {
+    if (this.$version === '2') {
+      this.$instance.$destroy();
+      this.$instance.$el.innerHTML = '';
+    } else {
+      this.$instance.unmount();
+      this.$router.$destroy();
+    }
+    this.$instance = null;
+    this.$router = null;
+    this.$store = null;
+  }
+
+  public update(props: any) {
+    return Promise.resolve(props);
+  }
+
+  public start() {
+    if (this.$log) {
+      LogColor.bgBlack(`[启动 ${this.$name} 应用]:`);
+      LogColor.bgGreen(`=============[应用信息]`);
+      const table = {
+        是否有主应用: window.__POWERED_BY_QIANKUN__,
+        应用名称: this.$name,
+        vue版本: this.$version,
+        是否开启Log: this.$log,
+        路由模式: this.$history,
+        路由地址: this.$activeRule,
+        子应用入口: this.$component,
+        是否存在store: this.$store ? true : false
+      };
+      console.table(table);
+      LogColor.bgGreen(`=============[应用信息]`);
+    }
+    if (window.__POWERED_BY_QIANKUN__) {
+      // @ts-ignore
+      __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ as string;
+    }
+    // 独立运行时
+    if (!window.__POWERED_BY_QIANKUN__) {
+      this.render();
+    }
+  }
+
   // 创建vue2.x实例
   private v2(container: any) {
     this.$instance = new this.$Vue({
@@ -65,70 +129,6 @@ class UseMicroApp {
       this.$instance.use(this.$store);
     }
     this.$instance.mount(container ? container.querySelector('#app') : '#app');
-  }
-
-  render(props: any = {}): void {
-    const { container } = props;
-    const routeOption: any = registerRouteConfig(this.$routes, {
-      history: this.$history,
-      component: this.$component,
-      activeRule: this.$activeRule,
-      local: this.$local
-    });
-    this.$router = new this.$VueRouter(routeOption);
-    Number(this.$version) === 2 ? this.v2(container) : this.v3(container);
-  }
-
-  bootstrap() {
-    return Promise.resolve();
-  }
-
-  mount(props: any) {
-    this.render(props);
-  }
-
-  unmount() {
-    if (this.$version === '2') {
-      this.$instance.$destroy();
-      this.$instance.$el.innerHTML = '';
-    } else {
-      this.$instance.unmount();
-      this.$router.$destroy();
-    }
-    this.$instance = null;
-    this.$router = null;
-    this.$store = null;
-  }
-
-  update(props: any) {
-    return Promise.resolve(props);
-  }
-
-  start() {
-    if (this.$log) {
-      LogColor.bgBlack(`[start ${this.$name} app] is primary app :`, window.__POWERED_BY_QIANKUN__);
-      LogColor.bgGreen(`=============[app info start]`);
-      const table = {
-        是否有主应用: window.__POWERED_BY_QIANKUN__,
-        应用名称: this.$name,
-        vue版本: this.$version,
-        是否开启Log: this.$log,
-        路由模式: this.$history,
-        路由地址: this.$activeRule,
-        子应用入口: this.$component,
-        是否存在store: this.$store ? true : false
-      };
-      console.table(table);
-      LogColor.bgGreen(`=============[app info end]`);
-    }
-    if (window.__POWERED_BY_QIANKUN__) {
-      // @ts-ignore
-      __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ as string;
-    }
-    // 独立运行时
-    if (!window.__POWERED_BY_QIANKUN__) {
-      this.render();
-    }
   }
 }
 

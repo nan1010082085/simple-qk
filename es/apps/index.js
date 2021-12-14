@@ -33,20 +33,6 @@ class UseMicroApp {
         this.$Vue = Vue;
         this.$render = render;
     }
-    v2(container) {
-        this.$instance = new this.$Vue({
-            router: this.$router,
-            store: this.$store || null,
-            render: (h) => h(this.$render)
-        }).$mount(container ? container.querySelector('#app') : '#app');
-    }
-    v3(container) {
-        this.$instance = this.$Vue(this.$render).use(this.$router);
-        if (this.$store) {
-            this.$instance.use(this.$store);
-        }
-        this.$instance.mount(container ? container.querySelector('#app') : '#app');
-    }
     render(props = {}) {
         const { container } = props;
         const routeOption = registerRouteConfig(this.$routes, {
@@ -82,8 +68,8 @@ class UseMicroApp {
     }
     start() {
         if (this.$log) {
-            LogColor.bgBlack(`[start ${this.$name} app] is primary app :`, window.__POWERED_BY_QIANKUN__);
-            LogColor.bgGreen(`=============[app info start]`);
+            LogColor.bgBlack(`[启动 ${this.$name} 应用]:`);
+            LogColor.bgGreen(`=============[应用信息]`);
             const table = {
                 是否有主应用: window.__POWERED_BY_QIANKUN__,
                 应用名称: this.$name,
@@ -95,7 +81,7 @@ class UseMicroApp {
                 是否存在store: this.$store ? true : false
             };
             console.table(table);
-            LogColor.bgGreen(`=============[app info end]`);
+            LogColor.bgGreen(`=============[应用信息]`);
         }
         if (window.__POWERED_BY_QIANKUN__) {
             __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
@@ -103,6 +89,20 @@ class UseMicroApp {
         if (!window.__POWERED_BY_QIANKUN__) {
             this.render();
         }
+    }
+    v2(container) {
+        this.$instance = new this.$Vue({
+            router: this.$router,
+            store: this.$store || null,
+            render: (h) => h(this.$render)
+        }).$mount(container ? container.querySelector('#app') : '#app');
+    }
+    v3(container) {
+        this.$instance = this.$Vue(this.$render).use(this.$router);
+        if (this.$store) {
+            this.$instance.use(this.$store);
+        }
+        this.$instance.mount(container ? container.querySelector('#app') : '#app');
     }
 }
 export default UseMicroApp;
