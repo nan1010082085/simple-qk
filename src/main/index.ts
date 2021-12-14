@@ -18,21 +18,25 @@ const beforeMount = async (app: any) => {
 
 class UseApp {
   constructor({ routes, config, action }: QKOption, isLogs: boolean) {
-    const _self: any = this;
-    if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
-      _self.$logs = isLogs;
-    } else {
-      _self.$logs = config?.env === 'dev';
-    }
-    this.useAppAction(routes, config, action);
+    this.useAppAction(routes, config, action, isLogs);
   }
 
   public start(option?: FrameworkConfiguration) {
     start(option);
   }
 
-  private useAppAction($routes: any = [], $config: any = { mode: 'hash', env: 'dev' }, $action: any = {}) {
-    const { $logs }: any = this;
+  private useAppAction(
+    $routes: any = [],
+    $config: any = { mode: 'hash', env: 'dev' },
+    $action: any = {},
+    isLogs: boolean
+  ) {
+    const _self: any = this;
+    if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
+      _self.$logs = isLogs;
+    } else {
+      _self.$logs = $config?.env === 'dev';
+    }
     if (!$routes || !$routes.length) {
       throw new Error('[QK] micro apps routes is undefined .');
     }

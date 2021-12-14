@@ -9,20 +9,19 @@ const beforeMount = async (app) => {
 };
 class UseApp {
     constructor({ routes, config, action }, isLogs) {
+        this.useAppAction(routes, config, action, isLogs);
+    }
+    start(option) {
+        start(option);
+    }
+    useAppAction($routes = [], $config = { mode: 'hash', env: 'dev' }, $action = {}, isLogs) {
         const _self = this;
         if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
             _self.$logs = isLogs;
         }
         else {
-            _self.$logs = config?.env === 'dev';
+            _self.$logs = $config?.env === 'dev';
         }
-        this.useAppAction(routes, config, action);
-    }
-    start(option) {
-        start(option);
-    }
-    useAppAction($routes = [], $config = { mode: 'hash', env: 'dev' }, $action = {}) {
-        const { $logs } = this;
         if (!$routes || !$routes.length) {
             throw new Error('[QK] micro apps routes is undefined .');
         }
