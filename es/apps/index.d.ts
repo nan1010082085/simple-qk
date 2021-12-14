@@ -1,6 +1,6 @@
 import { UseMicroAppParam } from '../typings';
 declare class UseMicroApp {
-    constructor({ version, option, Vue, VueRouter, render }: UseMicroAppParam, isLogs: boolean);
+    constructor({ version, option, Vue, VueRouter, render }: UseMicroAppParam, isLogs?: boolean);
     render(props?: any): void;
     bootstrap(): Promise<void>;
     mount(props: any): void;

@@ -60,7 +60,7 @@ class UseMicroApp {
         const _self = this;
         if (_self.$log) {
             LogColor.bgBlack(`[启动 ${_self.$name} 应用]:`);
-            LogColor.bgGreen(`=============[应用信息]`);
+            LogColor.bgBlue(`=============[应用信息]`);
             const table = {
                 是否有主应用: window.__POWERED_BY_QIANKUN__,
                 应用名称: _self.$name,
@@ -72,7 +72,6 @@ class UseMicroApp {
                 是否存在store: _self.$store ? true : false
             };
             console.table(table);
-            LogColor.bgGreen(`=============[应用信息]`);
         }
         if (window.__POWERED_BY_QIANKUN__) {
             __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
