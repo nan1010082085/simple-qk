@@ -1,19 +1,5 @@
 import { registerRouteConfig } from './registerRouteConfig';
 class UseMicroApp {
-    version;
-    $history;
-    $routes;
-    $activeRule;
-    $local;
-    $component;
-    $log;
-    $name;
-    $instance = null;
-    $Vue;
-    $render;
-    $VueRouter;
-    $store;
-    $router;
     constructor({ version = '2', option, Vue, VueRouter, render }) {
         const { history, routes, name, component, store, local = false, log = true } = option;
         this.version = version;
@@ -29,6 +15,20 @@ class UseMicroApp {
         this.$Vue = Vue;
         this.$render = render;
     }
+    version;
+    $history;
+    $routes;
+    $activeRule;
+    $local;
+    $component;
+    $log;
+    $name;
+    $instance = null;
+    $Vue;
+    $render;
+    $VueRouter;
+    $store;
+    $router;
     v2(container) {
         this.$instance = new this.$Vue({
             router: this.$router,

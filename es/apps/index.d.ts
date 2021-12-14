@@ -1,5 +1,6 @@
 import { UseMicroAppParam } from '../typings';
 declare class UseMicroApp {
+    constructor({ version, option, Vue, VueRouter, render }: UseMicroAppParam);
     private version;
     private $history;
     private $routes;
@@ -14,7 +15,6 @@ declare class UseMicroApp {
     private $VueRouter;
     private $store;
     private $router;
-    constructor({ version, option, Vue, VueRouter, render }: UseMicroAppParam);
     private v2;
     private v3;
     render(props?: any): void;
