@@ -31,7 +31,7 @@ app.start();
 ## Default Component
 
 - 微应用默认 `router-view` 默认使用 `vue@next` 创建
-- 微应用如没用安装 `vue3.x` 版本需要自行替换 `component`
+- 微应用注册 `component` 必填
 
 ```js
 import { QKRegisterMicroApp } from 'simple-qk';
