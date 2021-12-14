@@ -30,4 +30,3 @@ it('Test UseMicroApp is assign function', () => {
         unmount: {}
     });
 });
-//# sourceMappingURL=use_micro_app.test.js.map

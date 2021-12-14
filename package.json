@@ -15,7 +15,7 @@
     "release": "standard-version"
   },
   "main": "lib/index.umd.js",
-  "module": "es/index.js",
+  "module": "lib/index.es.js",
   "types": "es/index.d.ts",
   "exports": {
     ".": {
