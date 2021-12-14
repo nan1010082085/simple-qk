@@ -67,6 +67,7 @@ class UseMicroApp {
         }
         else {
             this.$instance.unmount();
+            this.$router.$destroy();
         }
         this.$instance = null;
         this.$router = null;

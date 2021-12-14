@@ -84,7 +84,7 @@ export interface RegisterRouteConfigOption {
  * @param {object} component 注册回调组件 必填
  * @param {object} store vuex状态管理注册
  */
-interface UseMicroAppOption {
+export interface UseMicroAppOption {
   history: 'hash' | 'history' | (() => void) | any;
   routes: any;
   name: any;
@@ -95,7 +95,7 @@ interface UseMicroAppOption {
 
 /**
  * @param version 版本
- * @param {object} option routes vue路由对象集 name 组件名称 component 注册返回的唯一组件, store vuex状态 log 是否开启日志
+ * @param {object} option {history 路由类型 routes 路由列表 name 注册名称， 和 package.name 一致 component 注册回调组件 必填 store vuex状态管理注册}
  * @param {object} Vue 实例
  * @param {object} VueRouter 路由实例
  * @param {object} render vue默认app组件
