@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.15.0](https://github.com/nan1010082085/simple-qk/compare/v1.14.0...v1.15.0) (2021-12-14)
+
+
+### Features
+
+* **logs:** add npm browser-log-color, add logs info ([c51f6e3](https://github.com/nan1010082085/simple-qk/commit/c51f6e3a88f165e4661cf6f77ada41e0833ad103))
+
 ## [1.14.0](https://github.com/nan1010082085/simple-qk/compare/v1.13.0...v1.14.0) (2021-12-14)
 
 
