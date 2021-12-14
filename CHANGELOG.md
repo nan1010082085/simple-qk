@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.10.0](https://github.com/nan1010082085/simple-qk/compare/v1.9.2...v1.10.0) (2021-12-14)
+
+
+### Features
+
+* 修复卸载v3未调用destory ([b853b78](https://github.com/nan1010082085/simple-qk/commit/b853b78611d3e3d3c96c84594f06f802a2be38db))
+* 增加interface, 注册子应用必填component ([87b4670](https://github.com/nan1010082085/simple-qk/commit/87b4670a987217ff14c4b715a3c4ffdc87f5fb1b))
+
 ### [1.9.2](https://github.com/nan1010082085/simple-qk/compare/v1.9.1...v1.9.2) (2021-11-24)
 
 
