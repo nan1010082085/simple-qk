@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.18.0](https://github.com/nan1010082085/simple-qk/compare/v1.17.0...v1.18.0) (2021-12-14)
+
+
+### Features
+
+* **main:** main app ([3ee8491](https://github.com/nan1010082085/simple-qk/commit/3ee8491084600453cd8e5266a5f334e87bbf5f9f))
+
+
+### Bug Fixes
+
+* **main:** 修复应用注册报错 ([88354d0](https://github.com/nan1010082085/simple-qk/commit/88354d0abe118bbccf4ebb5c4ae62f6fc2867eaa))
+
 ## [1.17.0](https://github.com/nan1010082085/simple-qk/compare/v1.16.0...v1.17.0) (2021-12-14)
 
 
