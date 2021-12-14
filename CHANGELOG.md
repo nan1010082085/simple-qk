@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.17.0](https://github.com/nan1010082085/simple-qk/compare/v1.16.0...v1.17.0) (2021-12-14)
+
+
+### Features
+
+* **app:** 重构类 ([18e7d60](https://github.com/nan1010082085/simple-qk/commit/18e7d60af88958a25e947ce4ad9abb82d8c5ab77))
+
 ## [1.16.0](https://github.com/nan1010082085/simple-qk/compare/v1.15.0...v1.16.0) (2021-12-14)
 
 
