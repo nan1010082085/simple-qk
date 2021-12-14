@@ -17,13 +17,12 @@ const beforeMount = async (app: any) => {
 };
 
 class UseApp {
-  public $logs: boolean = false;
-
   constructor({ routes, config, action }: QKOption, isLogs: boolean) {
+    const _self: any = this;
     if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {
-      this.$logs = isLogs;
+      _self.$logs = isLogs;
     } else {
-      this.$logs = config?.env === 'dev';
+      _self.$logs = config?.env === 'dev';
     }
     this.useAppAction(routes, config, action);
   }
@@ -33,6 +32,7 @@ class UseApp {
   }
 
   private useAppAction($routes: any = [], $config: any = { mode: 'hash', env: 'dev' }, $action: any = {}) {
+    const { $logs }: any = this;
     if (!$routes || !$routes.length) {
       throw new Error('[QK] micro apps routes is undefined .');
     }
@@ -65,7 +65,7 @@ class UseApp {
         $action
       )
     );
-    if (this.$logs) {
+    if ($logs) {
       LogColor.bgBlack('注册应用信息');
       console.table($routes);
     }

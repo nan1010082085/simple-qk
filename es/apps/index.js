@@ -1,84 +1,75 @@
 import { BrowserLogColor as LogColor } from 'browser-log-color';
 import { registerRouteConfig } from './registerRouteConfig';
 class UseMicroApp {
-    $version = '2';
-    $history = 'hash';
-    $routes = [];
-    $activeRule = '';
-    $local = true;
-    $component = '';
-    $log;
-    $name;
-    $instance = null;
-    $Vue;
-    $render;
-    $VueRouter;
-    $store;
-    $router;
-    constructor({ version = '2', option, Vue, VueRouter, render }) {
-        const { history, routes, name, component, store, local = false, log = true } = option;
+    constructor({ version = '2', option, Vue, VueRouter, render }, isLogs) {
+        const { history, routes, name, component, store, local = false } = option;
         if (!component) {
             throw new Error('component is not define');
         }
-        this.$version = version;
-        this.$log = log;
-        this.$name = name;
-        this.$history = history;
-        this.$routes = routes;
-        this.$component = component;
-        this.$activeRule = `${name.split('-')[0]}`;
-        this.$local = local ? '/' : `${name}`;
-        this.$store = store;
-        this.$VueRouter = VueRouter;
-        this.$Vue = Vue;
-        this.$render = render;
+        const _self = this;
+        _self.$version = version;
+        _self.$log = isLogs;
+        _self.$name = name;
+        _self.$history = history;
+        _self.$routes = routes;
+        _self.$component = component;
+        _self.$activeRule = `${name.split('-')[0]}`;
+        _self.$local = local ? '/' : `${name}`;
+        _self.$store = store;
+        _self.$VueRouter = VueRouter;
+        _self.$Vue = Vue;
+        _self.$render = render;
     }
     render(props = {}) {
+        const _self = this;
         const { container } = props;
-        const routeOption = registerRouteConfig(this.$routes, {
-            history: this.$history,
-            component: this.$component,
-            activeRule: this.$activeRule,
-            local: this.$local
+        const routeOption = registerRouteConfig(_self.$routes, {
+            history: _self.$history,
+            component: _self.$component,
+            activeRule: _self.$activeRule,
+            local: _self.$local
         });
-        this.$router = new this.$VueRouter(routeOption);
-        Number(this.$version) === 2 ? this.v2(container) : this.v3(container);
+        _self.$router = new _self.$VueRouter(routeOption);
+        Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
     }
     bootstrap() {
         return Promise.resolve();
     }
     mount(props) {
-        this.render(props);
+        const _self = this;
+        _self.render(props);
     }
     unmount() {
-        if (this.$version === '2') {
-            this.$instance.$destroy();
-            this.$instance.$el.innerHTML = '';
+        const _self = this;
+        if (_self.$version === '2') {
+            _self.$instance.$destroy();
+            _self.$instance.$el.innerHTML = '';
         }
         else {
-            this.$instance.unmount();
-            this.$router.$destroy();
+            _self.$instance.unmount();
+            _self.$router.$destroy();
         }
-        this.$instance = null;
-        this.$router = null;
-        this.$store = null;
+        _self.$instance = null;
+        _self.$router = null;
+        _self.$store = null;
     }
     update(props) {
         return Promise.resolve(props);
     }
     start() {
-        if (this.$log) {
-            LogColor.bgBlack(`[启动 ${this.$name} 应用]:`);
+        const _self = this;
+        if (_self.$log) {
+            LogColor.bgBlack(`[启动 ${_self.$name} 应用]:`);
             LogColor.bgGreen(`=============[应用信息]`);
             const table = {
                 是否有主应用: window.__POWERED_BY_QIANKUN__,
-                应用名称: this.$name,
-                vue版本: this.$version,
-                是否开启Log: this.$log,
-                路由模式: this.$history,
-                路由地址: this.$activeRule,
-                子应用入口: this.$component,
-                是否存在store: this.$store ? true : false
+                应用名称: _self.$name,
+                vue版本: _self.$version,
+                是否开启Log: _self.$log,
+                路由模式: _self.$history,
+                路由地址: _self.$activeRule,
+                子应用入口: _self.$component,
+                是否存在store: _self.$store ? true : false
             };
             console.table(table);
             LogColor.bgGreen(`=============[应用信息]`);
@@ -87,22 +78,24 @@ class UseMicroApp {
             __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
         }
         if (!window.__POWERED_BY_QIANKUN__) {
-            this.render();
+            _self.render();
         }
     }
     v2(container) {
-        this.$instance = new this.$Vue({
-            router: this.$router,
-            store: this.$store || null,
-            render: (h) => h(this.$render)
+        const _self = this;
+        _self.$instance = new _self.$Vue({
+            router: _self.$router,
+            store: _self.$store || null,
+            render: (h) => h(_self.$render)
         }).$mount(container ? container.querySelector('#app') : '#app');
     }
     v3(container) {
-        this.$instance = this.$Vue(this.$render).use(this.$router);
-        if (this.$store) {
-            this.$instance.use(this.$store);
+        const _self = this;
+        _self.$instance = _self.$Vue(_self.$render).use(_self.$router);
+        if (_self.$store) {
+            _self.$instance.use(_self.$store);
         }
-        this.$instance.mount(container ? container.querySelector('#app') : '#app');
+        _self.$instance.mount(container ? container.querySelector('#app') : '#app');
     }
 }
 export default UseMicroApp;

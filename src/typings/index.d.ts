@@ -120,3 +120,26 @@ export interface QKOption {
   config?: MicroAppsConfigOption;
   action?: FrameworkLifeCycles<any>;
 }
+
+export interface UseMicroAppInstance {
+  // VUE版本
+  $version: string | number;
+  // 微应用路由模式
+  $history: any;
+  // 微应用路由集
+  $routes: RouteConfig[];
+  // 应用激活路径
+  $activeRule: any;
+  // 独立运行
+  $local: boolean;
+  // 微应用路由加载组件
+  $component: any;
+  $log: boolean;
+  $name: string;
+  $instance: { $destroy: any; $el: any } | any;
+  $Vue: any;
+  $render: any;
+  $VueRouter: any;
+  $store: any;
+  $router: any;
+}

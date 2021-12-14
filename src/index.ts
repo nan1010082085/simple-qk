@@ -4,5 +4,5 @@ import UseApp from './main';
 import UseMicroApp from './apps';
 
 export const QKRegisterApp = (option: QKOption, isLogs: boolean) => new UseApp(option, isLogs);
-export const QKRegisterMicroApp = (option: UseMicroAppParam) => new UseMicroApp(option);
+export const QKRegisterMicroApp = (option: UseMicroAppParam, isLogs: boolean) => new UseMicroApp(option, isLogs);
 export default QK;

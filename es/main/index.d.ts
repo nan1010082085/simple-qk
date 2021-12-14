@@ -1,7 +1,6 @@
 import { QKOption } from '../typings';
 import { FrameworkConfiguration } from 'qiankun';
 declare class UseApp {
-    $logs: boolean;
     constructor({ routes, config, action }: QKOption, isLogs: boolean);
     start(option?: FrameworkConfiguration): void;
     private useAppAction;

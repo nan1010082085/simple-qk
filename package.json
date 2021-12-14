@@ -1,6 +1,6 @@
 {
   "name": "simple-qk",
-  "version": "1.15.0",
+  "version": "1.14.0",
   "description": "utils",
   "scripts": {
     "build": "yarn rimraf && yarn build:es && yarn build:up",
@@ -19,7 +19,7 @@
   "types": "es/index.d.ts",
   "exports": {
     ".": {
-      "import": "./es/index.js",
+      "import": "./lib/index.es.js",
       "require": "./lib/index.umd.js"
     }
   },

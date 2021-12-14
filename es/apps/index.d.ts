@@ -1,27 +1,13 @@
 import { UseMicroAppParam } from '../typings';
 declare class UseMicroApp {
-    private $version;
-    private $history;
-    private $routes;
-    private $activeRule;
-    private $local;
-    private $component;
-    private $log;
-    private $name;
-    private $instance;
-    private $Vue;
-    private $render;
-    private $VueRouter;
-    private $store;
-    private $router;
-    constructor({ version, option, Vue, VueRouter, render }: UseMicroAppParam);
+    constructor({ version, option, Vue, VueRouter, render }: UseMicroAppParam, isLogs: boolean);
     render(props?: any): void;
     bootstrap(): Promise<void>;
     mount(props: any): void;
     unmount(): void;
     update(props: any): Promise<any>;
     start(): void;
-    private v2;
-    private v3;
+    v2(container: any): void;
+    v3(container: any): void;
 }
 export default UseMicroApp;
