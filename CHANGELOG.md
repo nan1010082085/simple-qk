@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.20.1](https://github.com/nan1010082085/simple-qk/compare/v1.20.0...v1.20.1) (2021-12-14)
+
+
+### Bug Fixes
+
+* **unmount:** 修复vue3应用卸载报错 ([ed65ee9](https://github.com/nan1010082085/simple-qk/commit/ed65ee99693a3be9f1269f8a89a3fd61d34f4b00))
+
 ## [1.20.0](https://github.com/nan1010082085/simple-qk/compare/v1.19.0...v1.20.0) (2021-12-14)
 
 
