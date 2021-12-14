@@ -2,9 +2,6 @@
   "name": "simple-qk",
   "version": "1.10.2",
   "description": "utils",
-  "main": "lib/index.js",
-  "module": "es/index.js",
-  "types": "es/index.d.ts",
   "scripts": {
     "build": "yarn rimraf && yarn build:es && yarn build:up",
     "rimraf": "rimraf es && rimraf lib && rimraf com",
@@ -17,6 +14,9 @@
     "lint": "lint-staged",
     "release": "standard-version"
   },
+  "main": "lib/index.umd.js",
+  "module": "lib/index.es.js",
+  "types": "es/index.d.ts",
   "files": [
     "lib",
     "es",

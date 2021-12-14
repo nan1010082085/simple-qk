@@ -25,7 +25,7 @@ const plugin = [
     babelHelpers: 'bundled'
   }),
   RollupPluginCopy({
-    targets: [{src: 'src/typings', dest: 'es'}]
+    targets: [{ src: 'src/typings', dest: 'es' }]
   })
 ];
 
@@ -35,6 +35,15 @@ export default {
     {
       file: 'lib/index.umd.js',
       format: 'umd',
+      name: 'SimpleQk',
+      globals: {
+        vue: 'Vue'
+      },
+      exports: 'named'
+    },
+    {
+      file: 'lib/index.es.js',
+      format: 'es',
       name: 'SimpleQk',
       globals: {
         vue: 'Vue'
