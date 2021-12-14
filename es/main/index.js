@@ -45,7 +45,7 @@ class UseApp {
             beforeLoad,
             beforeMount
         }, $action));
-        if ($logs) {
+        if (_self.$logs) {
             LogColor.bgBlack('注册应用信息');
             console.table($routes);
         }
