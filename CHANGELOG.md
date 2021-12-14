@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.19.0](https://github.com/nan1010082085/simple-qk/compare/v1.18.0...v1.19.0) (2021-12-14)
+
+
+### Features
+
+* **json:** package.json ([142afd2](https://github.com/nan1010082085/simple-qk/commit/142afd2e957807af7ccaf4088e4baae642ca2bb5))
+
 ## [1.18.0](https://github.com/nan1010082085/simple-qk/compare/v1.17.0...v1.18.0) (2021-12-14)
 
 
