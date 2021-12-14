@@ -88,7 +88,7 @@ export interface UseMicroAppOption {
   history: 'hash' | 'history' | (() => void) | any;
   routes: any;
   name: any;
-  component: HTMLDivElement;
+  component: any;
   store?: any;
   [T: string]: any;
 }
