@@ -77,22 +77,32 @@ export interface RegisterRouteConfigOption {
 }
 
 /**
+ * 注册子应用option参数
+ * @param {object} history 路由类型
+ * @param {object} routes 路由列表
+ * @param {object} name 注册名称， 和 package.name 一致
+ * @param {object} component 注册回调组件 必填
+ * @param {object} store vuex状态管理注册
+ */
+interface UseMicroAppOption {
+  history: 'hash' | 'history' | (() => void) | any;
+  routes: any;
+  name: any;
+  component: HTMLDivElement;
+  store?: any;
+  [T: string]: any;
+}
+
+/**
  * @param version 版本
- * @param {object} option routes vue路由对象集 name 组件名称 components 路由注册返回的唯一组件, store vuex状态 log 是否开启日志
+ * @param {object} option routes vue路由对象集 name 组件名称 component 注册返回的唯一组件, store vuex状态 log 是否开启日志
  * @param {object} Vue 实例
  * @param {object} VueRouter 路由实例
  * @param {object} render vue默认app组件
  */
-export interface UseMicroAppOption {
+export interface UseMicroAppParam {
   version?: string;
-  option: {
-    history: 'hash' | 'history' | (() => void) | any;
-    routes: any;
-    name: any;
-    component?: any;
-    store?: any;
-    [T: string]: any;
-  };
+  option: UseMicroAppOption;
   Vue: any;
   VueRouter: any;
   render: any;

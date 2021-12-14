@@ -1,4 +1,4 @@
-import { RouteConfig, UseMicroAppOption } from '../typings';
+import { RouteConfig, UseMicroAppParam } from '../typings';
 import { registerRouteConfig } from './registerRouteConfig';
 
 /**
@@ -27,7 +27,7 @@ class UseMicroApp {
   private $store!: any;
   private $router!: any;
 
-  constructor({ version = '2', option, Vue, VueRouter, render }: UseMicroAppOption) {
+  constructor({ version = '2', option, Vue, VueRouter, render }: UseMicroAppParam) {
     const { history, routes, name, component, store, local = false, log = true } = option;
     this.version = version;
     this.$log = log;
