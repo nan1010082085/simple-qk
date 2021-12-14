@@ -17,7 +17,7 @@ const beforeMount = async (app: any) => {
 };
 
 class UseApp {
-  constructor({ routes, config, action }: QKOption, isLogs: boolean) {
+  constructor({ routes, config, action }: QKOption, isLogs?: boolean) {
     this.useAppAction(routes, config, action, isLogs);
   }
 
@@ -29,7 +29,7 @@ class UseApp {
     $routes: any = [],
     $config: any = { mode: 'hash', env: 'dev' },
     $action: any = {},
-    isLogs: boolean
+    isLogs: boolean | undefined
   ) {
     const _self: any = this;
     if (typeof isLogs === 'boolean' && typeof isLogs !== 'undefined') {

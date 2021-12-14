@@ -8,7 +8,7 @@ import { registerRouteConfig } from './registerRouteConfig';
  */
 
 class UseMicroApp {
-  constructor({ version = '2', option, Vue, VueRouter, render }: UseMicroAppParam, isLogs: boolean) {
+  constructor({ version = '2', option, Vue, VueRouter, render }: UseMicroAppParam, isLogs?: boolean) {
     const { history, routes, name, component, store, local = false } = option;
     if (!component) {
       throw new Error('component is not define');
@@ -72,7 +72,7 @@ class UseMicroApp {
     const _self: any = this;
     if (_self.$log) {
       LogColor.bgBlack(`[启动 ${_self.$name} 应用]:`);
-      LogColor.bgGreen(`=============[应用信息]`);
+      LogColor.bgBlue(`=============[应用信息]`);
       const table = {
         是否有主应用: window.__POWERED_BY_QIANKUN__,
         应用名称: _self.$name,
@@ -84,7 +84,6 @@ class UseMicroApp {
         是否存在store: _self.$store ? true : false
       };
       console.table(table);
-      LogColor.bgGreen(`=============[应用信息]`);
     }
     if (window.__POWERED_BY_QIANKUN__) {
       // @ts-ignore
