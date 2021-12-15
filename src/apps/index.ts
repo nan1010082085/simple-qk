@@ -80,7 +80,8 @@ class UseMicroApp {
         路由模式: _self.$history,
         路由地址: _self.$activeRule,
         子应用入口: _self.$component,
-        是否存在store: _self.$store ? true : false
+        是否存在store: _self.$store ? true : false,
+        是否允许独立运行: _self.$local
       };
       console.table(table);
     }
