@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.22.0](https://github.com/nan1010082085/simple-qk/compare/v1.21.1...v1.22.0) (2021-12-15)
+
+
+### Features
+
+* **app:** `main` 增加手动加载应用 ([f3f0d75](https://github.com/nan1010082085/simple-qk/commit/f3f0d75b25839444d5cd78c852443e84fd749039))
+
 ### [1.21.1](https://github.com/nan1010082085/simple-qk/compare/v1.21.0...v1.21.1) (2021-12-15)
 
 ## [1.21.0](https://github.com/nan1010082085/simple-qk/compare/v1.20.1...v1.21.0) (2021-12-15)
