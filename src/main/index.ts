@@ -2,18 +2,17 @@
  * @author: Yang Dongnan
  * 2021年11月17日
  */
-
-import { QKOption } from '../typings';
-import { FrameworkConfiguration, registerMicroApps, start } from 'qiankun';
+import { QKOption, LoadApps } from '../typings';
+import { FrameworkConfiguration, loadMicroApp, registerMicroApps, start } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';
 import { BrowserLogColor as LogColor } from 'browser-log-color';
 
 const beforeLoad = async (app: any) => {
-  console.log('[QK] before load', app.name);
+  LogColor.bgSpringGreen('[QK] before load', app.name);
 };
 
 const beforeMount = async (app: any) => {
-  console.log('[QK] before mount', app.name);
+  LogColor.bgSpringGreen('[QK] before mount', app.name);
 };
 
 class UseApp {
@@ -21,8 +20,24 @@ class UseApp {
     this.useAppAction(routes, config, action, isLogs);
   }
 
+  // 启动
   public start(option?: FrameworkConfiguration) {
     start(option);
+  }
+
+  // 手动加载应用
+  public loadApps(env: 'dev' | 'prod', app: LoadApps, isLogs?: boolean) {
+    const { name, entry, container = '#load-micro-app-container', props } = app;
+    if (isLogs) {
+      LogColor.bgBlack(`[手动加载 ${app.name}]：`);
+      console.table(app);
+    }
+    return loadMicroApp({
+      name,
+      entry: env === 'dev' ? `/${name}/` : entry,
+      container,
+      props
+    });
   }
 
   private useAppAction(
@@ -70,7 +85,7 @@ class UseApp {
       )
     );
     if (_self.$logs) {
-      LogColor.bgBlack('注册应用信息');
+      LogColor.bgBlack('注册应用信息：');
       console.table($routes);
     }
   }

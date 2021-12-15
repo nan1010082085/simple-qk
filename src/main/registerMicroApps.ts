@@ -22,7 +22,7 @@ export const activeRuleCheck = (mode: 'hash' | 'history', name: string) => {
  * @param {Option} option 环境配置和容器节点配置
  */
 export function registerMicroAppsConfig(microApps: RoutesMicroApp[], option: MicroAppsConfigOption) {
-  const { mode, container = '#container-micro-app', env = 'dev', devParam = [] } = option;
+  const { mode, container = '#micro-app-container', env = 'dev', devParam = [] } = option;
   microApps.forEach((apps: RoutesMicroApp) => {
     const entry = devParam && devParam.find(({ key, url }: any) => key === apps.name) || null;
     apps.activeRule = activeRuleCheck(mode, apps.name);

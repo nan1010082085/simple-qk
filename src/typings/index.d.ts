@@ -53,6 +53,7 @@ export interface RouteConfig {
  * 注册微应用配置
  * @param {string} container 微应用节点选择器
  * @param {dev | prod} env 环境
+ * @param {string} container 微应用加载Element位置 默认id=micro-app-container
  * @param {} devParam dev环境下设置访问绝对路径
  */
 export interface MicroAppsConfigOption {
@@ -122,25 +123,50 @@ export interface QKOption {
   action?: FrameworkLifeCycles<any>;
 }
 
+/**
+ * 注册子应用参数
+ * @param $version VUE版本
+ * @param $history 微应用路由模式
+ * @param $routes 微应用路由集
+ * @param $activeRule 应用激活路径
+ * @param $local 独立运行
+ * @param $component 微应用路由加载组件
+ * @param $log 是否开启日志
+ * @param $name 应用名称
+ * @param $Vue vue库实例
+ * @param $VueRouter 路由库实例
+ * @param $instance 应用实例
+ * @param $router 应用路由实例
+ * @param $store 应用状态实例
+ * @param $render 应用入口组件
+ */
 export interface UseMicroAppInstance {
-  // VUE版本
   $version: string | number;
-  // 微应用路由模式
   $history: any;
-  // 微应用路由集
   $routes: RouteConfig[];
-  // 应用激活路径
   $activeRule: any;
-  // 独立运行
   $local: boolean;
-  // 微应用路由加载组件
   $component: any;
   $log: boolean;
   $name: string;
   $instance: { $destroy: any; $el: any } | any;
   $Vue: any;
-  $render: any;
   $VueRouter: any;
+  $render: any;
   $store: any;
   $router: any;
+}
+
+/**
+ * 手动加载应用
+ * @param name 应用名称 prod环境下为entry入口
+ * @param entry 应用入口地址
+ * @param container 应用加载Element位置 默认id=load-micro-app-container
+ * @param props 应用参数
+ */
+export interface LoadApps {
+  name: string;
+  entry: string;
+  container: string;
+  props?: any;
 }
