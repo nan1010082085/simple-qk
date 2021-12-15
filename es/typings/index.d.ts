@@ -78,11 +78,12 @@ export interface RegisterRouteConfigOption {
 
 /**
  * 注册子应用option参数
- * @param {object} history 路由类型
- * @param {object} routes 路由列表
- * @param {object} name 注册名称， 和 package.name 一致
- * @param {object} component 注册回调组件 必填
- * @param {object} store vuex状态管理注册
+ * @param {any} history 路由类型
+ * @param {any} routes 路由列表
+ * @param {any} name 注册名称， 和 package.name 一致
+ * @param {any} component 注册回调组件 必填
+ * @param {any} store vuex状态管理注册
+ * @param {boolean} local 是否允许独立运行
  */
 export interface UseMicroAppOption {
   history: 'hash' | 'history' | (() => void) | any;
@@ -90,7 +91,7 @@ export interface UseMicroAppOption {
   name: any;
   component: any;
   store?: any;
-  log?: boolean;
+  local?: boolean;
   [T: string]: any;
 }
 
