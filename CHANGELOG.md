@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.21.0](https://github.com/nan1010082085/simple-qk/compare/v1.20.1...v1.21.0) (2021-12-15)
+
+
+### Features
+
+* **d:** 增加log说明，增加.d声明描述 ([20c2afe](https://github.com/nan1010082085/simple-qk/commit/20c2afe1c32ddd9fd0757e4c86cce789d9cad603))
+
 ### [1.20.1](https://github.com/nan1010082085/simple-qk/compare/v1.20.0...v1.20.1) (2021-12-14)
 
 
