@@ -1,11 +1,11 @@
-import { registerMicroApps, start } from 'qiankun';
+import { loadMicroApp, registerMicroApps, start } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';
 import { BrowserLogColor as LogColor } from 'browser-log-color';
 const beforeLoad = async (app) => {
-    console.log('[QK] before load', app.name);
+    LogColor.bgSpringGreen('[QK] before load', app.name);
 };
 const beforeMount = async (app) => {
-    console.log('[QK] before mount', app.name);
+    LogColor.bgSpringGreen('[QK] before mount', app.name);
 };
 class UseApp {
     constructor({ routes, config, action }, isLogs) {
@@ -13,6 +13,19 @@ class UseApp {
     }
     start(option) {
         start(option);
+    }
+    loadApps(env, app, isLogs) {
+        const { name, entry, container = '#load-micro-app-container', props } = app;
+        if (isLogs) {
+            LogColor.bgBlack(`[手动加载 ${app.name}]：`);
+            console.table(app);
+        }
+        return loadMicroApp({
+            name,
+            entry: env === 'dev' ? `/${name}/` : entry,
+            container,
+            props
+        });
     }
     useAppAction($routes = [], $config = { mode: 'hash', env: 'dev' }, $action = {}, isLogs) {
         const _self = this;
@@ -46,7 +59,7 @@ class UseApp {
             beforeMount
         }, $action));
         if (_self.$logs) {
-            LogColor.bgBlack('注册应用信息');
+            LogColor.bgBlack('注册应用信息：');
             console.table($routes);
         }
     }

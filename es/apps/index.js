@@ -58,8 +58,7 @@ class UseMicroApp {
     start() {
         const _self = this;
         if (_self.$log) {
-            LogColor.bgBlack(`[启动 ${_self.$name} 应用]:`);
-            LogColor.bgBlue(`=============[应用信息]`);
+            LogColor.bgBlack(`[启动应用 ${_self.$name}]:`);
             const table = {
                 是否有主应用: window.__POWERED_BY_QIANKUN__,
                 应用名称: _self.$name,

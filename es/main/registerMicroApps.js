@@ -3,7 +3,7 @@ export const activeRuleCheck = (mode, name) => {
     return mode === 'hash' ? getActiveRule(`#/${name.split('-')[0]}`) : `/${name.split('-')[0]}`;
 };
 export function registerMicroAppsConfig(microApps, option) {
-    const { mode, container = '#container-micro-app', env = 'dev', devParam = [] } = option;
+    const { mode, container = '#micro-app-container', env = 'dev', devParam = [] } = option;
     microApps.forEach((apps) => {
         const entry = devParam && devParam.find(({ key, url }) => key === apps.name) || null;
         apps.activeRule = activeRuleCheck(mode, apps.name);
