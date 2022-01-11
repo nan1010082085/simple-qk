@@ -36,7 +36,7 @@
     "simple-qk",
     "qk"
   ],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "browser-log-color": "^0.0.17",
     "qiankun": "^2.5.1",

@@ -80,7 +80,7 @@ class UseMicroApp {
     const _self: any = this;
     // 日志
     if (_self.$log) {
-      LogColor.bgBlack(`[启动应用 ${_self.$name}]:`);
+      LogColor.bgGroup(['启动', `${_self.$name}:`], ['bgSpringGreen', 'bgBlack']);
       const table = {
         是否有主应用: window.__POWERED_BY_QIANKUN__,
         应用名称: _self.$name,
@@ -92,7 +92,7 @@ class UseMicroApp {
         是否存在store: _self.$store ? true : false,
         是否允许独立运行: _self.$local
       };
-      console.table(table);
+      LogColor.bgBlue('应用参数', table);
     }
     if (window.__POWERED_BY_QIANKUN__) {
       // @ts-ignore
