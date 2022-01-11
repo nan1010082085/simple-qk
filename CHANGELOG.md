@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.23.0](https://github.com/nan1010082085/simple-qk/compare/v1.22.1...v1.23.0) (2022-01-11)
+
+
+### Features
+
+* **props:** 增加vue初始 props传递 ([5acf309](https://github.com/nan1010082085/simple-qk/commit/5acf3097acab1ea3dc3eac4e06be66fc9c9a50ca))
+
 ### [1.22.1](https://github.com/nan1010082085/simple-qk/compare/v1.22.0...v1.22.1) (2022-01-07)
 
 
