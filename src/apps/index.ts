@@ -28,9 +28,18 @@ class UseMicroApp {
     _self.$render = render;
   }
 
-  public render(props: any = {}): void {
+  public render(appProps: any = {}): void {
     const _self: any = this;
-    const { container } = props;
+    // 取值 挂在DOM container， 实例初始参数props
+    const { container, props } = appProps;
+    // 日志
+    if (_self.$log) {
+      const table = {
+        实例DOM: container,
+        实例参数: props
+      };
+      console.table(table);
+    }
     const routeOption: any = registerRouteConfig(_self.$routes, {
       history: _self.$history,
       component: _self.$component,
@@ -38,7 +47,7 @@ class UseMicroApp {
       local: _self.$local
     });
     _self.$router = new _self.$VueRouter(routeOption);
-    Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
+    Number(_self.$version) === 2 ? _self.v2(container, props) : _self.v3(container, props);
   }
 
   public bootstrap() {
@@ -69,6 +78,7 @@ class UseMicroApp {
 
   public start() {
     const _self: any = this;
+    // 日志
     if (_self.$log) {
       LogColor.bgBlack(`[启动应用 ${_self.$name}]:`);
       const table = {
@@ -94,21 +104,29 @@ class UseMicroApp {
     }
   }
 
-  // 创建vue2.x实例
-  v2(container: any) {
+  /**
+   * 创建vue2.x实例
+   * @param container 实例挂在dom
+   * @param props 实例初始传递参数
+   */
+  v2(container: any, props: { [T: string]: any }) {
     const _self: any = this;
     _self.$instance = new _self.$Vue({
       router: _self.$router,
       store: _self.$store || null,
-      props: { ...container },
+      props,
       render: (h: any) => h(_self.$render)
     }).$mount(container ? container.querySelector('#app') : '#app');
   }
 
-  // 创建vue3.x实例
-  v3(container: any) {
+  /**
+   * 创建vue3.x实例
+   * @param container 实例挂在dom
+   * @param props 实例初始传递参数
+   */
+  v3(container: any, props: { [T: string]: any }) {
     const _self: any = this;
-    _self.$instance = _self.$Vue(_self.$render, { ...container }).use(_self.$router);
+    _self.$instance = _self.$Vue(_self.$render, props).use(_self.$router);
     if (_self.$store) {
       _self.$instance.use(_self.$store);
     }
