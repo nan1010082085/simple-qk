@@ -23,6 +23,13 @@ class UseMicroApp {
     render(appProps = {}) {
         const _self = this;
         const { container, props } = appProps;
+        if (_self.$log) {
+            const table = {
+                实例DOM: container,
+                实例参数: props
+            };
+            console.table(table);
+        }
         const routeOption = registerRouteConfig(_self.$routes, {
             history: _self.$history,
             component: _self.$component,
