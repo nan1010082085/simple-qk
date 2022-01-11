@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.24.0](https://github.com/nan1010082085/simple-qk/compare/v1.23.0...v1.24.0) (2022-01-11)
+
+
+### Features
+
+* **apps:** 增加app初始参数传递，增加日志 ([1d9e07a](https://github.com/nan1010082085/simple-qk/commit/1d9e07a66dde6f0bb7e1ddf0fd53a6f7272072c1))
+
 ## [1.23.0](https://github.com/nan1010082085/simple-qk/compare/v1.22.1...v1.23.0) (2022-01-11)
 
 
