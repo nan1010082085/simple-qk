@@ -1,6 +1,6 @@
 {
   "name": "simple-qk",
-  "version": "1.24.0",
+  "version": "1.25.0",
   "description": "utils",
   "scripts": {
     "build": "yarn rimraf && yarn build:es && yarn build:up",

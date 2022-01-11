@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.25.0](https://github.com/nan1010082085/simple-qk/compare/v1.24.0...v1.25.0) (2022-01-11)
+
+
+### Features
+
+* **license:** 修改开源协议 MIT ([263c1e5](https://github.com/nan1010082085/simple-qk/commit/263c1e5c36e9af575f4e8a52b15a48c507e5f1fe))
+
 ## [1.24.0](https://github.com/nan1010082085/simple-qk/compare/v1.23.0...v1.24.0) (2022-01-11)
 
 
