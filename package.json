@@ -38,7 +38,7 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "browser-log-color": "^0.0.17",
+    "browser-log-color": "^0.0.18",
     "qiankun": "^2.5.1",
     "standard-version": "^9.3.2",
     "vue": "^3.2.22"
