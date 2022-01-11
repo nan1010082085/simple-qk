@@ -28,7 +28,7 @@ class UseMicroApp {
                 实例DOM: container,
                 实例参数: props
             };
-            console.table(table);
+            LogColor.bgBlue('初始化实例', table);
         }
         const routeOption = registerRouteConfig(_self.$routes, {
             history: _self.$history,
@@ -65,7 +65,7 @@ class UseMicroApp {
     start() {
         const _self = this;
         if (_self.$log) {
-            LogColor.bgBlack(`[启动应用 ${_self.$name}]:`);
+            LogColor.bgGroup(['启动', `${_self.$name}:`], ['bgSpringGreen', 'bgBlack']);
             const table = {
                 是否有主应用: window.__POWERED_BY_QIANKUN__,
                 应用名称: _self.$name,
@@ -77,7 +77,7 @@ class UseMicroApp {
                 是否存在store: _self.$store ? true : false,
                 是否允许独立运行: _self.$local
             };
-            console.table(table);
+            LogColor.bgBlue('应用参数', table);
         }
         if (window.__POWERED_BY_QIANKUN__) {
             __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
