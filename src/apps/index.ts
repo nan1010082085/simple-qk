@@ -38,7 +38,7 @@ class UseMicroApp {
         实例DOM: container,
         实例参数: props
       };
-      console.table(table);
+      LogColor.bgBlue('初始化实例', table);
     }
     const routeOption: any = registerRouteConfig(_self.$routes, {
       history: _self.$history,
