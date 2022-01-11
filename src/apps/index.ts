@@ -100,6 +100,7 @@ class UseMicroApp {
     _self.$instance = new _self.$Vue({
       router: _self.$router,
       store: _self.$store || null,
+      props: { ...container },
       render: (h: any) => h(_self.$render)
     }).$mount(container ? container.querySelector('#app') : '#app');
   }
@@ -107,7 +108,7 @@ class UseMicroApp {
   // 创建vue3.x实例
   v3(container: any) {
     const _self: any = this;
-    _self.$instance = _self.$Vue(_self.$render).use(_self.$router);
+    _self.$instance = _self.$Vue(_self.$render, { ...container }).use(_self.$router);
     if (_self.$store) {
       _self.$instance.use(_self.$store);
     }
