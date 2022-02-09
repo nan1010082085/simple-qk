@@ -1,7 +1,7 @@
 import { BrowserLogColor as LogColor } from 'browser-log-color';
 import { registerRouteConfig } from './registerRouteConfig';
 class UseMicroApp {
-    constructor({ version = '2', option, Vue, VueRouter, render }, isLogs) {
+    constructor({ version = '2', option, Vue, render, VueRouter }, isLogs) {
         const { history, routes, name, component, store, local = false } = option;
         if (!component) {
             throw new Error('component is not define');
@@ -15,10 +15,10 @@ class UseMicroApp {
         _self.$component = component;
         _self.$activeRule = `${name.split('-')[0]}`;
         _self.$local = local ? '/' : `${name}`;
-        _self.$store = store;
-        _self.$VueRouter = VueRouter;
         _self.$Vue = Vue;
         _self.$render = render;
+        _self.$VueRouter = VueRouter;
+        _self.$store = store;
     }
     render(appProps = {}) {
         const _self = this;
@@ -36,7 +36,12 @@ class UseMicroApp {
             activeRule: _self.$activeRule,
             local: _self.$local
         });
-        _self.$router = new _self.$VueRouter(routeOption);
+        if (_self.$VueRouter === void 0) {
+            _self.$router = null;
+        }
+        else {
+            _self.$router = new _self.$VueRouter(routeOption);
+        }
         Number(_self.$version) === 2 ? _self.v2(container, props) : _self.v3(container, props);
     }
     bootstrap() {
