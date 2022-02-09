@@ -52,10 +52,9 @@ class UseApp {
     } else {
       _self.$logs = $config?.env === 'dev';
     }
-    if (!$routes || !$routes.length) {
+    if (!$routes) {
       throw new Error('[QK] micro apps routes is undefined .');
     }
-
     if ($config.env === 'prod') {
       // 生产
       registerMicroAppsConfig($routes, $config);
