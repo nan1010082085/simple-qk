@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.25.1](https://github.com/nan1010082085/simple-qk/compare/v1.25.0...v1.25.1) (2022-01-11)
+
 ## [1.25.0](https://github.com/nan1010082085/simple-qk/compare/v1.24.0...v1.25.0) (2022-01-11)
 
 
