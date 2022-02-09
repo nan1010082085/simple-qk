@@ -9,7 +9,7 @@ import { registerRouteConfig } from './registerRouteConfig';
 
 class UseMicroApp {
   constructor({ version = '2', option, Vue, render, VueRouter }: UseMicroAppParam, isLogs?: boolean) {
-    const { history, routes, name, component, store, local = false } = option;
+    const { history, routes = [], name, component, store, local = false } = option;
     if (!component) {
       throw new Error('component is not define');
     }
