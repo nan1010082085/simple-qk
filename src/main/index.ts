@@ -34,7 +34,7 @@ class UseApp {
     }
     return loadMicroApp({
       name,
-      entry: env === 'dev' ? `/${name}/` : entry,
+      entry: env === 'dev' ? entry : `/${name}/`,
       container,
       props
     });
