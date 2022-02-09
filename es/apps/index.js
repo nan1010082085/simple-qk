@@ -2,7 +2,7 @@ import { BrowserLogColor as LogColor } from 'browser-log-color';
 import { registerRouteConfig } from './registerRouteConfig';
 class UseMicroApp {
     constructor({ version = '2', option, Vue, render, VueRouter }, isLogs) {
-        const { history, routes, name, component, store, local = false } = option;
+        const { history, routes = [], name, component, store, local = false } = option;
         if (!component) {
             throw new Error('component is not define');
         }
