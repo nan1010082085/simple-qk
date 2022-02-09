@@ -88,11 +88,11 @@ export interface RegisterRouteConfigOption {
  */
 export interface UseMicroAppOption {
   history: 'hash' | 'history' | (() => void) | any;
-  routes: any;
   name: any;
   component: any;
   store?: any;
   local?: boolean;
+  routes?: any;
   [T: string]: any;
 }
 
@@ -107,8 +107,8 @@ export interface UseMicroAppParam {
   version?: string | number;
   option: UseMicroAppOption;
   Vue: any;
-  VueRouter: any;
   render: any;
+  VueRouter?: any;
 }
 
 /**
@@ -151,10 +151,10 @@ export interface UseMicroAppInstance {
   $name: string;
   $instance: { $destroy: any; $el: any } | any;
   $Vue: any;
-  $VueRouter: any;
   $render: any;
-  $store: any;
   $router: any;
+  $store: any;
+  $VueRouter: any;
 }
 
 /**
