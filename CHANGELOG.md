@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.27.0](https://github.com/nan1010082085/simple-qk/compare/v1.26.0...v1.27.0) (2022-02-09)
+
+
+### Features
+
+* **apps:** 允许路由集合为空，路由集合默认空数组，调整接口校验 ([941ba76](https://github.com/nan1010082085/simple-qk/commit/941ba76a2c08b666b2958f7db4d396a74e649183))
+
 ## [1.26.0](https://github.com/nan1010082085/simple-qk/compare/v1.25.1...v1.26.0) (2022-02-09)
 
 
