@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.27.4](https://github.com/nan1010082085/simple-qk/compare/v1.27.3...v1.27.4) (2022-02-09)
+
+
+### Bug Fixes
+
+* **main:** 修复QK.loadApps手动加载应用时entry路径错误 ([c1c5430](https://github.com/nan1010082085/simple-qk/commit/c1c54303eecb966cc669f46c5014665a65ebf492))
+
 ### [1.27.3](https://github.com/nan1010082085/simple-qk/compare/v1.27.2...v1.27.3) (2022-02-09)
 
 ### [1.27.2](https://github.com/nan1010082085/simple-qk/compare/v1.27.1...v1.27.2) (2022-02-09)
