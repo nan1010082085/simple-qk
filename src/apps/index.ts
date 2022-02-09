@@ -46,7 +46,7 @@ class UseMicroApp {
       activeRule: _self.$activeRule,
       local: _self.$local
     });
-    if(_self.$VueRouter === void 0) {
+    if (_self.$VueRouter === void 0) {
       _self.$router = null;
     } else {
       _self.$router = new _self.$VueRouter(routeOption);
@@ -118,8 +118,10 @@ class UseMicroApp {
     _self.$instance = new _self.$Vue({
       router: _self.$router,
       store: _self.$store || null,
-      props,
-      render: (h: any) => h(_self.$render)
+      render: (h: any) =>
+        h(_self.$render, {
+          attrs: props
+        })
     }).$mount(container ? container.querySelector('#app') : '#app');
   }
 
