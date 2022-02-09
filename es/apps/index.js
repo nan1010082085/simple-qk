@@ -96,8 +96,9 @@ class UseMicroApp {
         _self.$instance = new _self.$Vue({
             router: _self.$router,
             store: _self.$store || null,
-            props,
-            render: (h) => h(_self.$render)
+            render: (h) => h(_self.$render, {
+                attrs: props
+            })
         }).$mount(container ? container.querySelector('#app') : '#app');
     }
     v3(container, props) {
