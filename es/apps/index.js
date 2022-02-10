@@ -1,4 +1,3 @@
-import { BrowserLogColor as LogColor } from 'browser-log-color';
 import { registerRouteConfig } from './registerRouteConfig';
 class UseMicroApp {
     constructor({ version = '2', option, Vue, render, VueRouter }, isLogs) {
@@ -15,34 +14,42 @@ class UseMicroApp {
         _self.$component = component;
         _self.$activeRule = `${name.split('-')[0]}`;
         _self.$local = local ? '/' : `${name}`;
-        _self.$Vue = Vue;
+        _self.$vue = Vue;
         _self.$render = render;
-        _self.$VueRouter = VueRouter;
+        _self.$vueRouter = VueRouter;
         _self.$store = store;
+        _self.$props = null;
     }
     render(appProps = {}) {
         const _self = this;
         const { container, props } = appProps;
         if (_self.$log) {
-            const table = {
-                实例DOM: container,
-                实例参数: props
-            };
-            LogColor.bgBlue('初始化实例', table);
+            console.log(`Init ${_self.$name} Instance ==> `, {
+                dom: container,
+                props
+            });
         }
+        _self.$props = props;
         const routeOption = registerRouteConfig(_self.$routes, {
             history: _self.$history,
             component: _self.$component,
             activeRule: _self.$activeRule,
             local: _self.$local
         });
-        if (_self.$VueRouter === void 0) {
+        if (_self.$vueRouter === void 0) {
             _self.$router = null;
         }
         else {
-            _self.$router = new _self.$VueRouter(routeOption);
+            _self.$router = new _self.$vueRouter(routeOption);
         }
-        Number(_self.$version) === 2 ? _self.v2(container, props) : _self.v3(container, props);
+        Number(_self.$version) === 2 ? _self.v2(container, _self.$props) : _self.v3(container, _self.$props);
+    }
+    updateProps(props = {}) {
+        const _self = this;
+        if (_self.$log) {
+            console.log(`Update ${_self.$name} Props =>`, props);
+        }
+        _self.$props = props;
     }
     bootstrap() {
         return Promise.resolve();
@@ -65,24 +72,24 @@ class UseMicroApp {
         _self.$store = null;
     }
     update(props) {
-        return Promise.resolve(props);
+        const _self = this;
+        _self.updateProps(props);
     }
     start() {
         const _self = this;
         if (_self.$log) {
-            LogColor.bgGroup(['启动', `${_self.$name}:`], ['bgSpringGreen', 'bgBlack']);
-            const table = {
+            console.log('Start Micro App', `${_self.$name} ==>`, {
                 是否有主应用: window.__POWERED_BY_QIANKUN__,
                 应用名称: _self.$name,
                 vue版本: _self.$version,
                 是否开启Log: _self.$log,
-                路由模式: _self.$history,
-                路由地址: _self.$activeRule,
+                是否允许独立运行: _self.$local,
                 子应用入口: _self.$component,
                 是否存在store: _self.$store ? true : false,
-                是否允许独立运行: _self.$local
-            };
-            LogColor.bgBlue('应用参数', table);
+                是否存在路由: _self.$vueRouter ? true : false,
+                路由模式: _self.$history,
+                路由地址: _self.$activeRule
+            });
         }
         if (window.__POWERED_BY_QIANKUN__) {
             __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
@@ -93,17 +100,17 @@ class UseMicroApp {
     }
     v2(container, props) {
         const _self = this;
-        _self.$instance = new _self.$Vue({
+        _self.$instance = new _self.$vue({
             router: _self.$router,
             store: _self.$store || null,
             render: (h) => h(_self.$render, {
-                attrs: props
+                attrs: _self.$props
             })
         }).$mount(container ? container.querySelector('#app') : '#app');
     }
     v3(container, props) {
         const _self = this;
-        _self.$instance = _self.$Vue(_self.$render, props).use(_self.$router);
+        _self.$instance = _self.$vue(_self.$render, _self.$props).use(_self.$router);
         if (_self.$store) {
             _self.$instance.use(_self.$store);
         }
