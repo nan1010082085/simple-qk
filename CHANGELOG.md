@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.28.0](https://github.com/nan1010082085/simple-qk/compare/v1.27.4...v1.28.0) (2022-02-10)
+
+
+### Features
+
+* **update app:** 更新参数实例，去掉颜色插件，更换日志格式 ([11f9567](https://github.com/nan1010082085/simple-qk/commit/11f95673416ba3b973caf620c092c5546737a9c5))
+
 ### [1.27.4](https://github.com/nan1010082085/simple-qk/compare/v1.27.3...v1.27.4) (2022-02-09)
 
 
