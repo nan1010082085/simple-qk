@@ -31,15 +31,8 @@ class UseMicroApp {
   public render(appProps: any = {}): void {
     const _self: any = this;
     // 取值 挂在DOM container， 实例初始参数props
-    const { container, props } = appProps;
-    // 日志
-    if (_self.$log) {
-      console.log(`Init ${_self.$name} Instance ==> `, {
-        dom: container,
-        props
-      });
-    }
-    _self.$props = props;
+    const { container } = appProps;
+    _self.$props = appProps;
     const routeOption: any = registerRouteConfig(_self.$routes, {
       history: _self.$history,
       component: _self.$component,
@@ -51,15 +44,24 @@ class UseMicroApp {
     } else {
       _self.$router = new _self.$vueRouter(routeOption);
     }
-    Number(_self.$version) === 2 ? _self.v2(container, _self.$props) : _self.v3(container, _self.$props);
+    Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
+
+    // 日志
+    if (_self.$log) {
+      console.log(`Init ${_self.$name} Instance ==> `, {
+        dom: container,
+        props: appProps
+      });
+    }
   }
 
   public updateProps(props: any = {}): void {
     const _self: any = this;
+    _self.$props = props;
+    // 日志
     if (_self.$log) {
       console.log(`Update ${_self.$name} Props =>`, props);
     }
-    _self.$props = props;
   }
 
   public bootstrap() {
@@ -91,6 +93,14 @@ class UseMicroApp {
 
   public start() {
     const _self: any = this;
+    if (window.__POWERED_BY_QIANKUN__) {
+      // @ts-ignore
+      __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ as string;
+    }
+    // 独立运行时
+    if (!window.__POWERED_BY_QIANKUN__) {
+      _self.render();
+    }
     // 日志
     if (_self.$log) {
       console.log('Start Micro App', `${_self.$name} ==>`, {
@@ -106,14 +116,6 @@ class UseMicroApp {
         路由地址: _self.$activeRule
       });
     }
-    if (window.__POWERED_BY_QIANKUN__) {
-      // @ts-ignore
-      __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__ as string;
-    }
-    // 独立运行时
-    if (!window.__POWERED_BY_QIANKUN__) {
-      _self.render();
-    }
   }
 
   /**
@@ -121,7 +123,7 @@ class UseMicroApp {
    * @param container 实例挂在dom
    * @param props 实例初始传递参数
    */
-  v2(container: any, props: { [T: string]: any }) {
+  v2(container: any) {
     const _self: any = this;
     _self.$instance = new _self.$vue({
       router: _self.$router,
@@ -138,7 +140,7 @@ class UseMicroApp {
    * @param container 实例挂在dom
    * @param props 实例初始传递参数
    */
-  v3(container: any, props: { [T: string]: any }) {
+  v3(container: any) {
     const _self: any = this;
     _self.$instance = _self.$vue(_self.$render, _self.$props).use(_self.$router);
     if (_self.$store) {
