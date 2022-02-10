@@ -21,10 +21,11 @@ class UseMicroApp {
     _self.$component = component;
     _self.$activeRule = `${name.split('-')[0]}`;
     _self.$local = local ? '/' : `${name}`;
-    _self.$Vue = Vue;
+    _self.$vue = Vue;
     _self.$render = render;
-    _self.$VueRouter = VueRouter;
+    _self.$vueRouter = VueRouter;
     _self.$store = store;
+    _self.$props = null;
   }
 
   public render(appProps: any = {}): void {
@@ -38,18 +39,19 @@ class UseMicroApp {
         props
       });
     }
+    _self.$props = props;
     const routeOption: any = registerRouteConfig(_self.$routes, {
       history: _self.$history,
       component: _self.$component,
       activeRule: _self.$activeRule,
       local: _self.$local
     });
-    if (_self.$VueRouter === void 0) {
+    if (_self.$vueRouter === void 0) {
       _self.$router = null;
     } else {
-      _self.$router = new _self.$VueRouter(routeOption);
+      _self.$router = new _self.$vueRouter(routeOption);
     }
-    Number(_self.$version) === 2 ? _self.v2(container, props) : _self.v3(container, props);
+    Number(_self.$version) === 2 ? _self.v2(container, _self.$props) : _self.v3(container, _self.$props);
   }
 
   public updateProps(props: any = {}): void {
@@ -57,6 +59,7 @@ class UseMicroApp {
     if (_self.$log) {
       console.log(`Update ${_self.$name} Props =>`, props);
     }
+    _self.$props = props;
   }
 
   public bootstrap() {
@@ -98,7 +101,7 @@ class UseMicroApp {
         是否允许独立运行: _self.$local,
         子应用入口: _self.$component,
         是否存在store: _self.$store ? true : false,
-        是否存在路由: _self.$VueRouter ? true : false,
+        是否存在路由: _self.$vueRouter ? true : false,
         路由模式: _self.$history,
         路由地址: _self.$activeRule
       });
@@ -120,12 +123,12 @@ class UseMicroApp {
    */
   v2(container: any, props: { [T: string]: any }) {
     const _self: any = this;
-    _self.$instance = new _self.$Vue({
+    _self.$instance = new _self.$vue({
       router: _self.$router,
       store: _self.$store || null,
       render: (h: any) =>
         h(_self.$render, {
-          attrs: props
+          attrs: _self.$props
         })
     }).$mount(container ? container.querySelector('#app') : '#app');
   }
@@ -137,7 +140,7 @@ class UseMicroApp {
    */
   v3(container: any, props: { [T: string]: any }) {
     const _self: any = this;
-    _self.$instance = _self.$Vue(_self.$render, props).use(_self.$router);
+    _self.$instance = _self.$vue(_self.$render, _self.$props).use(_self.$router);
     if (_self.$store) {
       _self.$instance.use(_self.$store);
     }
