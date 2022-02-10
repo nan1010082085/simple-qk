@@ -1,4 +1,3 @@
-import { BrowserLogColor as LogColor } from 'browser-log-color';
 import { UseMicroAppInstance, UseMicroAppParam } from '../typings';
 import { registerRouteConfig } from './registerRouteConfig';
 
@@ -34,11 +33,10 @@ class UseMicroApp {
     const { container, props } = appProps;
     // 日志
     if (_self.$log) {
-      const table = {
-        实例DOM: container,
-        实例参数: props
-      };
-      LogColor.bgBlue('初始化实例', table);
+      console.log(`Init ${_self.$name} Instance ==> `, {
+        dom: container,
+        props
+      });
     }
     const routeOption: any = registerRouteConfig(_self.$routes, {
       history: _self.$history,
@@ -52,6 +50,13 @@ class UseMicroApp {
       _self.$router = new _self.$VueRouter(routeOption);
     }
     Number(_self.$version) === 2 ? _self.v2(container, props) : _self.v3(container, props);
+  }
+
+  public updateProps(props: any = {}): void {
+    const _self: any = this;
+    if (_self.$log) {
+      console.log(`Update ${_self.$name} Props =>`, props);
+    }
   }
 
   public bootstrap() {
@@ -77,26 +82,26 @@ class UseMicroApp {
   }
 
   public update(props: any) {
-    return Promise.resolve(props);
+    const _self: any = this;
+    _self.updateProps(props);
   }
 
   public start() {
     const _self: any = this;
     // 日志
     if (_self.$log) {
-      LogColor.bgGroup(['启动', `${_self.$name}:`], ['bgSpringGreen', 'bgBlack']);
-      const table = {
+      console.log('Start Micro App', `${_self.$name} ==>`, {
         是否有主应用: window.__POWERED_BY_QIANKUN__,
         应用名称: _self.$name,
         vue版本: _self.$version,
         是否开启Log: _self.$log,
-        路由模式: _self.$history,
-        路由地址: _self.$activeRule,
+        是否允许独立运行: _self.$local,
         子应用入口: _self.$component,
         是否存在store: _self.$store ? true : false,
-        是否允许独立运行: _self.$local
-      };
-      LogColor.bgBlue('应用参数', table);
+        是否存在路由: _self.$VueRouter ? true : false,
+        路由模式: _self.$history,
+        路由地址: _self.$activeRule
+      });
     }
     if (window.__POWERED_BY_QIANKUN__) {
       // @ts-ignore

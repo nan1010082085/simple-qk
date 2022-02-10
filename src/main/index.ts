@@ -5,14 +5,13 @@
 import { QKOption, LoadApps } from '../typings';
 import { FrameworkConfiguration, loadMicroApp, registerMicroApps, start } from 'qiankun';
 import { registerMicroAppsConfig } from './registerMicroApps';
-import { BrowserLogColor as LogColor } from 'browser-log-color';
 
 const beforeLoad = async (app: any) => {
-  LogColor.bgSpringGreen('[QK] before load', app.name);
+  console.log('[QK] before load', app.name);
 };
 
 const beforeMount = async (app: any) => {
-  LogColor.bgSpringGreen('[QK] before mount', app.name);
+  console.log('[QK] before mount', app.name);
 };
 
 class UseApp {
@@ -29,8 +28,7 @@ class UseApp {
   public loadApps(env: 'dev' | 'prod', app: LoadApps, isLogs?: boolean) {
     const { name, entry, container = '#load-micro-app-container', props } = app;
     if (isLogs) {
-      LogColor.bgBlack(`[手动加载 ${app.name}]：`);
-      console.table(app);
+      console.log(`[Load Micro ${app.name}] ==>`, app);
     }
     return loadMicroApp({
       name,
@@ -84,8 +82,7 @@ class UseApp {
       )
     );
     if (_self.$logs) {
-      LogColor.bgBlack('注册应用信息：');
-      console.table($routes);
+      console.log('Register Micro App ==>', $routes);
     }
   }
 }
