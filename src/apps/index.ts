@@ -44,8 +44,6 @@ class UseMicroApp {
     } else {
       _self.$router = new _self.$vueRouter(routeOption);
     }
-    Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
-
     // 日志
     if (_self.$log) {
       console.log(`Init ${_self.$name} Instance ==> `, {
@@ -53,15 +51,16 @@ class UseMicroApp {
         props: appProps
       });
     }
+    Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
   }
 
   public updateProps(props: any = {}): void {
     const _self: any = this;
-    _self.$props = props;
     // 日志
     if (_self.$log) {
       console.log(`Update ${_self.$name} Props =>`, props);
     }
+    _self.$props = props;
   }
 
   public bootstrap() {
@@ -130,7 +129,9 @@ class UseMicroApp {
       store: _self.$store || null,
       render: (h: any) =>
         h(_self.$render, {
-          attrs: _self.$props
+          attrs: {
+            props: _self.$props
+          }
         })
     }).$mount(container ? container.querySelector('#app') : '#app');
   }
@@ -142,7 +143,7 @@ class UseMicroApp {
    */
   v3(container: any) {
     const _self: any = this;
-    _self.$instance = _self.$vue(_self.$render, _self.$props).use(_self.$router);
+    _self.$instance = _self.$vue(_self.$render, { props: _self.$props }).use(_self.$router);
     if (_self.$store) {
       _self.$instance.use(_self.$store);
     }
