@@ -8,11 +8,7 @@ declare class UseMicroApp {
     unmount(): void;
     update(props: any): void;
     start(): void;
-    v2(container: any, props: {
-        [T: string]: any;
-    }): void;
-    v3(container: any, props: {
-        [T: string]: any;
-    }): void;
+    v2(container: any): void;
+    v3(container: any): void;
 }
 export default UseMicroApp;

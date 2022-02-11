@@ -22,14 +22,8 @@ class UseMicroApp {
     }
     render(appProps = {}) {
         const _self = this;
-        const { container, props } = appProps;
-        if (_self.$log) {
-            console.log(`Init ${_self.$name} Instance ==> `, {
-                dom: container,
-                props
-            });
-        }
-        _self.$props = props;
+        const { container } = appProps;
+        _self.$props = appProps;
         const routeOption = registerRouteConfig(_self.$routes, {
             history: _self.$history,
             component: _self.$component,
@@ -42,14 +36,20 @@ class UseMicroApp {
         else {
             _self.$router = new _self.$vueRouter(routeOption);
         }
-        Number(_self.$version) === 2 ? _self.v2(container, _self.$props) : _self.v3(container, _self.$props);
+        Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
+        if (_self.$log) {
+            console.log(`Init ${_self.$name} Instance ==> `, {
+                dom: container,
+                props: appProps
+            });
+        }
     }
     updateProps(props = {}) {
         const _self = this;
+        _self.$props = props;
         if (_self.$log) {
             console.log(`Update ${_self.$name} Props =>`, props);
         }
-        _self.$props = props;
     }
     bootstrap() {
         return Promise.resolve();
@@ -77,6 +77,12 @@ class UseMicroApp {
     }
     start() {
         const _self = this;
+        if (window.__POWERED_BY_QIANKUN__) {
+            __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
+        }
+        if (!window.__POWERED_BY_QIANKUN__) {
+            _self.render();
+        }
         if (_self.$log) {
             console.log('Start Micro App', `${_self.$name} ==>`, {
                 是否有主应用: window.__POWERED_BY_QIANKUN__,
@@ -91,14 +97,8 @@ class UseMicroApp {
                 路由地址: _self.$activeRule
             });
         }
-        if (window.__POWERED_BY_QIANKUN__) {
-            __webpack_public_path__ = window.__INJECTED_PUBLIC_PATH_BY_QIANKUN__;
-        }
-        if (!window.__POWERED_BY_QIANKUN__) {
-            _self.render();
-        }
     }
-    v2(container, props) {
+    v2(container) {
         const _self = this;
         _self.$instance = new _self.$vue({
             router: _self.$router,
@@ -108,7 +108,7 @@ class UseMicroApp {
             })
         }).$mount(container ? container.querySelector('#app') : '#app');
     }
-    v3(container, props) {
+    v3(container) {
         const _self = this;
         _self.$instance = _self.$vue(_self.$render, _self.$props).use(_self.$router);
         if (_self.$store) {
