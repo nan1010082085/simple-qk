@@ -36,20 +36,20 @@ class UseMicroApp {
         else {
             _self.$router = new _self.$vueRouter(routeOption);
         }
-        Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
         if (_self.$log) {
             console.log(`Init ${_self.$name} Instance ==> `, {
                 dom: container,
                 props: appProps
             });
         }
+        Number(_self.$version) === 2 ? _self.v2(container) : _self.v3(container);
     }
     updateProps(props = {}) {
         const _self = this;
-        _self.$props = props;
         if (_self.$log) {
             console.log(`Update ${_self.$name} Props =>`, props);
         }
+        _self.$props = props;
     }
     bootstrap() {
         return Promise.resolve();
@@ -104,13 +104,15 @@ class UseMicroApp {
             router: _self.$router,
             store: _self.$store || null,
             render: (h) => h(_self.$render, {
-                attrs: _self.$props
+                attrs: {
+                    props: _self.$props
+                }
             })
         }).$mount(container ? container.querySelector('#app') : '#app');
     }
     v3(container) {
         const _self = this;
-        _self.$instance = _self.$vue(_self.$render, _self.$props).use(_self.$router);
+        _self.$instance = _self.$vue(_self.$render, { props: _self.$props }).use(_self.$router);
         if (_self.$store) {
             _self.$instance.use(_self.$store);
         }
