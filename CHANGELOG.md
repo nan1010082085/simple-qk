@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.29.0](https://github.com/nan1010082085/simple-qk/compare/v1.28.3...v1.29.0) (2022-02-11)
+
+
+### Features
+
+* **rxjs:** 增加rxjs记录mount和update时期props更新 ([4a9fd10](https://github.com/nan1010082085/simple-qk/commit/4a9fd10e9264859857f393b63eaf675aa03d8de4))
+
 ### [1.28.3](https://github.com/nan1010082085/simple-qk/compare/v1.28.2...v1.28.3) (2022-02-11)
 
 ### [1.28.2](https://github.com/nan1010082085/simple-qk/compare/v1.28.1...v1.28.2) (2022-02-10)
