@@ -2,6 +2,7 @@ import * as QK from 'qiankun';
 import { QKOption, UseMicroAppParam } from './typings';
 import UseApp from './main';
 import UseMicroApp from './apps';
+import subject from './common/rxjs';
 
 /**
  * 容器注册应用集合
@@ -32,4 +33,16 @@ export const QKRegisterApp = (option: QKOption, isLogs?: boolean) => new UseApp(
  * @description option.local 是否允许独立运行 | 必填
  */
 export const QKRegisterMicroApp = (option: UseMicroAppParam, isLogs?: boolean) => new UseMicroApp(option, isLogs);
+
+/**
+ * 订阅
+ * @param {function} next 传播
+ * @param {function} error 错误
+ * @param {function} complete 完成
+ * @returns
+ */
+export const Observable = (next: (v: any) => void, error?: (e: any) => void, complete?: () => void) => {
+  return subject.subscribe({ next, error, complete });
+};
+
 export default QK;
