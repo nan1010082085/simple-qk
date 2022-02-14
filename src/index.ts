@@ -45,4 +45,6 @@ export const Observable = (next: (v: any) => void, error?: (e: any) => void, com
   return subject.subscribe({ next, error, complete });
 };
 
+export const start = QK.start;
+
 export default QK;

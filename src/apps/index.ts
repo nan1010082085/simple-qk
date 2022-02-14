@@ -25,9 +25,6 @@ class UseMicroApp {
     self.$vue = Vue;
     self.app = render;
     self.$vueRouter = VueRouter;
-    self.$props = null;
-    self.instance = null;
-    self.router = null;
     self.$store = store;
   }
 
@@ -51,11 +48,10 @@ class UseMicroApp {
     if (self.$log) {
       console.log(`Init ${self.$name} Instance ==> `, {
         dom: container,
-        props: self.$props
+        props
       });
     }
-    self.$props = props;
-    Number(self.$version) === 2 ? self.v2(container) : self.v3(container);
+    Number(self.$version) === 2 ? self.v2(container, props) : self.v3(container, props);
   }
 
   public updateProps(updateProps: any = {}): void {
@@ -65,8 +61,7 @@ class UseMicroApp {
     if (self.$log) {
       console.log(`Update ${self.$name} Props =>`, props);
     }
-    self.$props = Object.assign(self.$props, props);
-    subject.next(self.$props);
+    subject.next(props);
   }
 
   public bootstrap() {
@@ -129,7 +124,7 @@ class UseMicroApp {
    * @param provide 实例初始传递参数
    * @param props 实例初始传递参数
    */
-  protected v2(container: any) {
+  protected v2(container: any, props: any) {
     const self: any = this;
     self.instance = new self.$vue({
       router: self.$router,
@@ -137,7 +132,7 @@ class UseMicroApp {
       render: (h: any) => h(self.app)
     });
     self.instance.$mount(container ? container.querySelector('#app') : '#app');
-    subject.next(self.$props);
+    subject.next(props);
   }
 
   /**
@@ -145,7 +140,7 @@ class UseMicroApp {
    * @param container 实例挂在dom
    * @param props 实例初始传递参数
    */
-  protected v3(container: any) {
+  protected v3(container: any, props: any) {
     const self: any = this;
     self.instance = self.$vue(self.app);
     if (self.$router) {
@@ -155,7 +150,7 @@ class UseMicroApp {
       self.instance.use(self.$store);
     }
     self.instance.mount(container ? container.querySelector('#app') : '#app');
-    subject.next(self.$props);
+    subject.next(props);
   }
 }
 

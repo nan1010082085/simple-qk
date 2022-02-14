@@ -18,9 +18,6 @@ class UseMicroApp {
         self.$vue = Vue;
         self.app = render;
         self.$vueRouter = VueRouter;
-        self.$props = null;
-        self.instance = null;
-        self.router = null;
         self.$store = store;
     }
     render(appProps = {}) {
@@ -41,11 +38,10 @@ class UseMicroApp {
         if (self.$log) {
             console.log(`Init ${self.$name} Instance ==> `, {
                 dom: container,
-                props: self.$props
+                props
             });
         }
-        self.$props = props;
-        Number(self.$version) === 2 ? self.v2(container) : self.v3(container);
+        Number(self.$version) === 2 ? self.v2(container, props) : self.v3(container, props);
     }
     updateProps(updateProps = {}) {
         const { props = {} } = updateProps;
@@ -53,8 +49,7 @@ class UseMicroApp {
         if (self.$log) {
             console.log(`Update ${self.$name} Props =>`, props);
         }
-        self.$props = Object.assign(self.$props, props);
-        subject.next(self.$props);
+        subject.next(props);
     }
     bootstrap() {
         return Promise.resolve();
@@ -78,6 +73,7 @@ class UseMicroApp {
     }
     update(props) {
         const self = this;
+        console.log('simple qk update', props);
         self.updateProps(props);
     }
     start() {
@@ -103,7 +99,7 @@ class UseMicroApp {
             });
         }
     }
-    v2(container) {
+    v2(container, props) {
         const self = this;
         self.instance = new self.$vue({
             router: self.$router,
@@ -111,9 +107,9 @@ class UseMicroApp {
             render: (h) => h(self.app)
         });
         self.instance.$mount(container ? container.querySelector('#app') : '#app');
-        subject.next(self.$props);
+        subject.next(props);
     }
-    v3(container) {
+    v3(container, props) {
         const self = this;
         self.instance = self.$vue(self.app);
         if (self.$router) {
@@ -123,7 +119,7 @@ class UseMicroApp {
             self.instance.use(self.$store);
         }
         self.instance.mount(container ? container.querySelector('#app') : '#app');
-        subject.next(self.$props);
+        subject.next(props);
     }
 }
 export default UseMicroApp;

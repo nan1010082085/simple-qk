@@ -7,4 +7,5 @@ export const QKRegisterMicroApp = (option, isLogs) => new UseMicroApp(option, is
 export const Observable = (next, error, complete) => {
     return subject.subscribe({ next, error, complete });
 };
+export const start = QK.start;
 export default QK;

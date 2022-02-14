@@ -8,7 +8,7 @@ declare class UseMicroApp {
     unmount(): void;
     update(props: any): void;
     start(): void;
-    protected v2(container: any): void;
-    protected v3(container: any): void;
+    protected v2(container: any, props: any): void;
+    protected v3(container: any, props: any): void;
 }
 export default UseMicroApp;
