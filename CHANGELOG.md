@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.30.0](https://github.com/nan1010082085/simple-qk/compare/v1.29.1...v1.30.0) (2022-02-14)
+
+
+### Features
+
+* **app:** epxort qiankun.start function ([35cfb61](https://github.com/nan1010082085/simple-qk/commit/35cfb61a8014a57a23693114ce069dbe2bd42c1d))
+
 ### [1.29.1](https://github.com/nan1010082085/simple-qk/compare/v1.29.0...v1.29.1) (2022-02-11)
 
 ## [1.29.0](https://github.com/nan1010082085/simple-qk/compare/v1.28.3...v1.29.0) (2022-02-11)
