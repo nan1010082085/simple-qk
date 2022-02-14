@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.30.1](https://github.com/nan1010082085/simple-qk/compare/v1.30.0...v1.30.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* **localmicroapp:** 修复加载相同文件名称应用，name和entry重复无法再次加载成功问题 ([c188be3](https://github.com/nan1010082085/simple-qk/commit/c188be3b118ec9e94cbd5d7180c1538ac7dabb91))
+
 ## [1.30.0](https://github.com/nan1010082085/simple-qk/compare/v1.29.1...v1.30.0) (2022-02-14)
 
 
