@@ -163,10 +163,12 @@ export interface UseMicroAppInstance {
  * @param entry 应用入口地址
  * @param container 应用加载Element位置 默认id=load-micro-app-container
  * @param props 应用参数
+ * @param localFilePath 本地加载文件名称
  */
 export interface LoadApps {
   name: string;
   entry: string;
   container: string;
   props?: any;
+  localFilePath: string;
 }

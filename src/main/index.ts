@@ -26,13 +26,13 @@ class UseApp {
 
   // 手动加载应用
   public loadApps(env: 'dev' | 'prod', app: LoadApps, isLogs?: boolean) {
-    const { name, entry, container = '#load-micro-app-container', props } = app;
+    const { name, entry, container = '#load-micro-app-container', props, localFilePath } = app;
     if (isLogs) {
       console.log(`[Load Micro ${app.name}] ==>`, app);
     }
     return loadMicroApp({
       name,
-      entry: env === 'dev' ? entry : `/${name}/`,
+      entry: env === 'dev' ? entry : `/${localFilePath || name}/`,
       container,
       props
     });

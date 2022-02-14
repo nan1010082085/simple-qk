@@ -14,13 +14,13 @@ class UseApp {
         start(option);
     }
     loadApps(env, app, isLogs) {
-        const { name, entry, container = '#load-micro-app-container', props } = app;
+        const { name, entry, container = '#load-micro-app-container', props, localFilePath } = app;
         if (isLogs) {
             console.log(`[Load Micro ${app.name}] ==>`, app);
         }
         return loadMicroApp({
             name,
-            entry: env === 'dev' ? entry : `/${name}/`,
+            entry: env === 'dev' ? entry : `/${localFilePath || name}/`,
             container,
             props
         });
