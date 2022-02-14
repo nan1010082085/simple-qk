@@ -73,7 +73,6 @@ class UseMicroApp {
     }
     update(props) {
         const self = this;
-        console.log('simple qk update', props);
         self.updateProps(props);
     }
     start() {
